@@ -17,7 +17,7 @@ class SubnetProcessor(val ipAddress: IPV4Address) {
             subnetAddress.firstOctet,
             subnetAddress.secondOctet,
             subnetAddress.thirdOctet,
-            (subnetAddress.fourthOctet + 1u).toUByte(),
+            subnetAddress.fourthOctet.plus(1u).toUByte(),
             subnetAddress.mask
         )
     }

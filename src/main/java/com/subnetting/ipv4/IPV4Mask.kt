@@ -27,7 +27,7 @@ class IPV4Mask(value: String) {
         val fullOctetsCount = bitCount / 8
         return if (octetIndex < fullOctetsCount) {
             255u
-        } else {
+        } else if (octetIndex == fullOctetsCount) {
             var remainedBits = bitCount - (fullOctetsCount * 8)
             var mask = 0
             var i = 8
@@ -36,6 +36,8 @@ class IPV4Mask(value: String) {
                 remainedBits--
             }
             mask.toUByte()
+        } else {
+            0u
         }
 
         // bitCount = 25 -> 11111111 11111111 11111111 10000000

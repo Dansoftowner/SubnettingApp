@@ -1,7 +1,7 @@
 package com.subnetting.ipv4
 
 import com.subnetting.IPV4_ADDRESS_PATTERN
-import com.subnetting.MASK_ROUTING_PREFIX_PATTERN
+import com.subnetting.MASK_CIDR_PATTERN
 
 /**
  * Represents an IPV4 subnet mask.
@@ -18,7 +18,7 @@ class IPV4Mask(val bitCount: Int) {
      */
     constructor(stringFormat: String) : this(
         when {
-            stringFormat.matches(Regex(MASK_ROUTING_PREFIX_PATTERN)) -> {
+            stringFormat.matches(Regex(MASK_CIDR_PATTERN)) -> {
                 val numberValue = stringFormat.substring(1).toInt()
                 require(numberValue <= 32) // TODO: ask
                 numberValue

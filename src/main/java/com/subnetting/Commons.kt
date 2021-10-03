@@ -8,7 +8,7 @@ const val IPV4_ADDRESS_PATTERN = "\\d+\\.\\d+\\.\\d+\\.\\d+"
 /**
  * Regular expression representing a subnet mask written with the _routing prefix_
  */
-const val MASK_ROUTING_PREFIX_PATTERN = "/\\d+"
+const val MASK_CIDR_PATTERN = "/\\d+"
 
 @Deprecated("Use kotlin's Int.countOneBits()", level = DeprecationLevel.ERROR)
 fun octetBitCount(octet: UByte): Int {

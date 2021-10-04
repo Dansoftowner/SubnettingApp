@@ -12,6 +12,9 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'org.jetbrains.kotlin.jvm'
 
+    sourceCompatibility = '16'
+    targetCompatibility = '16'
+
     repositories {
         mavenCentral()
     }

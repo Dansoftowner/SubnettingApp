@@ -20,30 +20,9 @@ class IPV4Address {
     val mask: IPV4Mask
 
     /**
-     * The first 8-bit octet
-     */
-    val firstOctet: UByte
-
-    /**
-     * The second 8 bit octet
-     */
-    val secondOctet: UByte
-
-    /**
-     * The third 8 bit octet
-     */
-    val thirdOctet: UByte
-
-    /**
-     * The fourth 8 bit octet
-     */
-    val fourthOctet: UByte
-
-    /**
      * The list of the 4 octets
      */
     val octets: List<UByte>
-        get() = listOf(firstOctet, secondOctet, thirdOctet, fourthOctet)
 
     /**
      * Constructs the ipv4 address from the four given octet and subnet mask.
@@ -62,10 +41,7 @@ class IPV4Address {
     ) {
         this.stringFormat = "$octet1.$octet2.$octet3.$octet4"
         this.mask = mask
-        this.firstOctet = octet1
-        this.secondOctet = octet2
-        this.thirdOctet = octet3
-        this.fourthOctet = octet4
+        this.octets = listOf(octet1, octet2, octet3, octet4)
     }
 
     /**
@@ -79,16 +55,16 @@ class IPV4Address {
         require(stringFormat.matches(Regex(IPV4_ADDRESS_PATTERN)))
         this.stringFormat = stringFormat
         this.mask = mask
-        val octets = stringFormat
+        octets = stringFormat
             .split(".")
             .map { it.toUByte() }
-        firstOctet = octets[0]
-        secondOctet = octets[1]
-        thirdOctet = octets[2]
-        fourthOctet = octets[3]
+    }
+
+    operator fun get(octetIndex: Int): UByte {
+        return octets[octetIndex]
     }
 
     override fun toString(): String {
-        return "$firstOctet.$secondOctet.$thirdOctet.$fourthOctet /${mask.bitCount}"
+        return "${this[0]}.${this[1]}.${this[2]}.${this[3]} $mask"
     }
 }

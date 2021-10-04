@@ -1,7 +1,5 @@
 package com.subnetting.ipv4
 
-import kotlin.math.pow
-
 /**
  * Used for calculating some values of the subnet represented by the given [ipAddress].
  *
@@ -14,10 +12,10 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val subnetAddress: IPV4Address by lazy {
         IPV4Address(
-            ipAddress.firstOctet.and(ipAddress.mask.getMaskForOctet(0)),
-            ipAddress.secondOctet.and(ipAddress.mask.getMaskForOctet(1)),
-            ipAddress.thirdOctet.and(ipAddress.mask.getMaskForOctet(2)),
-            ipAddress.fourthOctet.and(ipAddress.mask.getMaskForOctet(3)),
+            ipAddress[0].and(ipAddress.mask[0]),
+            ipAddress[1].and(ipAddress.mask[1]),
+            ipAddress[2].and(ipAddress.mask[2]),
+            ipAddress[3].and(ipAddress.mask[3]),
             ipAddress.mask
         )
     }
@@ -27,10 +25,10 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val firstHostAddress: IPV4Address by lazy {
         IPV4Address(
-            subnetAddress.firstOctet,
-            subnetAddress.secondOctet,
-            subnetAddress.thirdOctet,
-            subnetAddress.fourthOctet.plus(1u).toUByte(),
+            subnetAddress[0],
+            subnetAddress[1],
+            subnetAddress[2],
+            subnetAddress[3].plus(1u).toUByte(),
             subnetAddress.mask
         )
     }
@@ -40,10 +38,10 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val lastHostAddress: IPV4Address by lazy {
         IPV4Address(
-            broadcastAddress.firstOctet,
-            broadcastAddress.secondOctet,
-            broadcastAddress.thirdOctet,
-            broadcastAddress.fourthOctet.minus(1u).toUByte(),
+            broadcastAddress[0],
+            broadcastAddress[1],
+            broadcastAddress[2],
+            broadcastAddress[3].minus(1u).toUByte(),
             broadcastAddress.mask
         )
     }
@@ -54,7 +52,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
     val broadcastAddress: IPV4Address by lazy {
         // TODO: find a more efficient way to calculate the broadcast address
         val newOctets = subnetAddress.octets.mapIndexed { index, it ->
-            val maskForOctet = subnetAddress.mask.getMaskForOctet(index)
+            val maskForOctet = subnetAddress.mask[index]
             val maskOneBits = maskForOctet.countOneBits()
             if (maskOneBits == 8) {
                 it
@@ -76,32 +74,5 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
             newOctets[3],
             subnetAddress.mask
         )
-    }
-
-    /**
-     * Gives the mask for the particular ipv4 address octet
-     *
-     * @param octetIndex the index of the octet between 0 and 3
-     */
-    private fun IPV4Mask.getMaskForOctet(octetIndex: Int): UByte {
-        val fullOctetsCount = bitCount / 8
-        return if (octetIndex < fullOctetsCount) {
-            255u
-        } else if (octetIndex == fullOctetsCount) {
-            var remainedBits = bitCount - (fullOctetsCount * 8)
-            var mask = 0
-            var i = 8
-            while (remainedBits > 0) {
-                mask += 2.0.pow(--i).toInt()
-                remainedBits--
-            }
-            mask.toUByte()
-        } else {
-            0u
-        }
-
-        // bitCount = 25 -> 11111111 11111111 11111111 10000000
-        // fullOctetsCount = 25 / 8 -> 3,125 -> 3
-        // remainedBits = 25 - (3 * 8) = 1
     }
 }

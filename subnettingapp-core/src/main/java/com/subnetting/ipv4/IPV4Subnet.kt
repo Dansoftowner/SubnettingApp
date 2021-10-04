@@ -7,7 +7,7 @@ import kotlin.math.pow
  *
  * @param ipAddress the ip address representing the subnet (it can be a host address too)
  */
-class SubnetProcessor(val ipAddress: IPV4Address) {
+class IPV4Subnet(private val ipAddress: IPV4Address) {
 
     /**
      * Gives the subnet address, if the base [ipAddress] is a host address

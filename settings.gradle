@@ -1,2 +1,3 @@
-rootProject.name = 'subnetting'
+rootProject.name = 'SubnettingApp'
+include 'subnettingapp-core', 'subnettingapp-cli', 'subnettingapp-gui'
 

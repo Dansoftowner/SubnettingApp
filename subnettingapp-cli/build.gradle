@@ -1,0 +1,9 @@
+plugins {
+    id 'application'
+}
+
+mainClassName = 'com.subnetting.cli.CLIApp'
+
+dependencies {
+    implementation project(':subnettingapp-core')
+}

@@ -7,7 +7,7 @@ import kotlin.math.pow
  *
  * @param ipAddress the ip address representing the subnet (it can be a host address too)
  */
-class SubnetProcessor(val ipAddress: IPV4Address) {
+class IPV4Subnet(private val ipAddress: IPV4Address) {
 
     /**
      * Gives the subnet address, if the base [ipAddress] is a host address
@@ -60,7 +60,7 @@ class SubnetProcessor(val ipAddress: IPV4Address) {
                 it
             } else {
                 var binaryString = it.toString(2)
-                binaryString = (1..(8 - binaryString.length)).joinToString(separator = "") { "0" } + binaryString
+                binaryString = "0".repeat(8 - binaryString.length) + binaryString
                 val filledBinaryString = binaryString.replaceRange(
                     maskOneBits,
                     binaryString.length,

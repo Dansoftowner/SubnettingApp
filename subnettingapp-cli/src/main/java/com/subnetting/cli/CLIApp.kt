@@ -4,7 +4,7 @@ package com.subnetting.cli
 
 import com.subnetting.ipv4.IPV4Address
 import com.subnetting.ipv4.IPV4Mask
-import com.subnetting.ipv4.SubnetProcessor
+import com.subnetting.ipv4.IPV4Subnet
 
 fun main() {
     println("-".repeat(50))
@@ -15,9 +15,9 @@ fun main() {
 
     val (ip, mask) = readLine()!!.split(" ")
 
-    val subnetProcessor = SubnetProcessor(IPV4Address(ip, IPV4Mask(mask)))
-    println("Subnet address: ${subnetProcessor.subnetAddress}")
-    println("First host address: ${subnetProcessor.firstHostAddress}")
-    println("Last host address: ${subnetProcessor.lastHostAddress}")
-    println("Broadcast address: ${subnetProcessor.broadcastAddress}")
+    val subnet = IPV4Subnet(IPV4Address(ip, IPV4Mask(mask)))
+    println("Subnet address: ${subnet.subnetAddress}")
+    println("First host address: ${subnet.firstHostAddress}")
+    println("Last host address: ${subnet.lastHostAddress}")
+    println("Broadcast address: ${subnet.broadcastAddress}")
 }

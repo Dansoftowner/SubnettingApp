@@ -46,9 +46,7 @@ class IPV4SubnetPartitioner(baseIp: IPV4Address, val hostCounts: List<Int>) {
             }
         }
 
-        return IPV4Address(octetStrings.map(String::toUByte), mask).also {
-            println("The next ip to '${this.stringFormat}' is '${it.stringFormat}")
-        }
+        return IPV4Address(octetStrings.map(String::toUByte), mask)
     }
 
 }

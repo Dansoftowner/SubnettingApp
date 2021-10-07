@@ -17,8 +17,22 @@ fun main() {
     val (ip, mask) = readLine()!!.split(" ")
 
     println("What do you want to do?")
-    println("")
+    println("1) Simple subnet info")
+    println("2) Subnet partitioning")
 
+    val option = readLine()!!.toInt()
+    when (option) {
+        1 -> {
+            printBasicSubnetInfo(ip, mask)
+        }
+        2 -> {
+            println("Give the host counts comma separated:")
+            val hostCounts = readLine()!!.split(",")
+                .map(String::trim)
+                .map(String::toInt)
+            printSubnetPartitions(ip, mask, hostCounts)
+        }
+    }
 }
 
 private fun printBasicSubnetInfo(ip: String, mask: String) {

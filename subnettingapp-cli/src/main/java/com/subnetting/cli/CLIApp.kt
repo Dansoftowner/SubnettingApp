@@ -2,63 +2,21 @@
 
 package com.subnetting.cli
 
-import com.subnetting.ipv4.IPV4Address
-import com.subnetting.ipv4.IPV4Mask
-import com.subnetting.ipv4.IPV4Subnet
-import com.subnetting.ipv4.IPV4SubnetPartitioner
+private val tasks = listOf(
+    SimpleSubnetInfoTask(),
+    SubnetPartitioningTask()
+)
 
 fun main() {
-    println("-".repeat(50))
-    println("${"-".repeat(18)}Subnetting App${"-".repeat(18)}")
-    println("-".repeat(50))
+    println(Header())
 
     println("Specify the ip address with the subnet mask!")
 
     val (ip, mask) = readLine()!!.split(" ")
 
-    println("What do you want to do?")
-    println("1) Simple subnet info")
-    println("2) Subnet partitioning")
+    println("Options: ")
+    println(tasks.mapIndexed { index, cliTask -> "${index + 1}) ${cliTask.name}" }.joinToString("\n"))
 
     val option = readLine()!!.toInt()
-    when (option) {
-        1 -> {
-            printBasicSubnetInfo(ip, mask)
-        }
-        2 -> {
-            println("Give the host counts comma separated:")
-            val hostCounts = readLine()!!.split(",")
-                .map(String::trim)
-                .map(String::toInt)
-            printSubnetPartitions(ip, mask, hostCounts)
-        }
-    }
-}
-
-private fun printBasicSubnetInfo(ip: String, mask: String) {
-    printBasicSubnetInfo(IPV4Address(ip, IPV4Mask(mask)))
-}
-
-private fun printBasicSubnetInfo(ip: IPV4Address) {
-    printBasicSubnetInfo(IPV4Subnet(ip))
-}
-
-private fun printBasicSubnetInfo(subnet: IPV4Subnet) {
-    println("Subnet address: ${subnet.subnetAddress}")
-    println("First host address: ${subnet.firstHostAddress}")
-    println("Last host address: ${subnet.lastHostAddress}")
-    println("Broadcast address: ${subnet.broadcastAddress}")
-}
-
-private fun printSubnetPartitions(ip: String, mask: String, hostCounts: List<Int>) {
-    printSubnetPartitions(IPV4Address(ip, IPV4Mask(mask)), hostCounts)
-}
-
-private fun printSubnetPartitions(ip: IPV4Address, hostCounts: List<Int>) {
-    val partitioner = IPV4SubnetPartitioner(ip, hostCounts)
-    partitioner.subnets.forEach {
-        println("-".repeat(10))
-        printBasicSubnetInfo(it)
-        println()
-    }
+    tasks[option - 1].execute(ip, mask)
 }

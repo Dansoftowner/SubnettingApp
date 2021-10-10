@@ -18,7 +18,7 @@ class IPV4SubnetPartitioner(baseIp: IPV4Address, val hostCounts: List<Int>) {
         }
 
     private val requiredMasks: List<IPV4Mask>
-        get() = hostCounts.map { IPV4Mask(32.minus(it.findAppropriatePower()).toInt()) }
+        get() = hostCounts.sortedDescending().map { IPV4Mask(32.minus(it.findAppropriatePower()).toInt()) }
 
     private fun Int.findAppropriatePower(): Long {
         // TODO: make this algorithm more efficient: O(log n) instead of O(n)

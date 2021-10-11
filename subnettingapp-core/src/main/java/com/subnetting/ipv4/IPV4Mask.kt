@@ -60,7 +60,19 @@ class IPV4Mask(val bitCount: Int) {
     }
 
     override fun toString(): String {
-        return "/$bitCount"
+        return toString(ToStringOption.CIDR_NOTATION)
+    }
+
+    fun toString(option: ToStringOption): String {
+        return when(option) {
+            ToStringOption.CIDR_NOTATION -> "/$bitCount"
+            ToStringOption.DOT_DECIMAL_NOTATION -> "${this[0]}.${this[1]}.${this[2]}.${this[3]}"
+        }
+    }
+
+    enum class ToStringOption {
+        CIDR_NOTATION,
+        DOT_DECIMAL_NOTATION
     }
 
 }

@@ -65,6 +65,24 @@ class IPV4Address {
     }
 
     override fun toString(): String {
-        return "${this[0]}.${this[1]}.${this[2]}.${this[3]} $mask"
+        return toString(ToStringOption.ADDRESS_AND_MASK)
+    }
+
+    fun toString(
+        option: ToStringOption,
+        maskFormat: IPV4Mask.ToStringOption = IPV4Mask.ToStringOption.CIDR_NOTATION
+    ): String =
+        when (option) {
+            ToStringOption.ONLY_ADDRESS -> "${this[0]}.${this[1]}.${this[2]}.${this[3]}"
+            ToStringOption.ADDRESS_AND_MASK -> toString(ToStringOption.ONLY_ADDRESS, maskFormat) + " ${
+                mask.toString(
+                    maskFormat
+                )
+            }"
+        }
+
+    enum class ToStringOption {
+        ONLY_ADDRESS,
+        ADDRESS_AND_MASK
     }
 }

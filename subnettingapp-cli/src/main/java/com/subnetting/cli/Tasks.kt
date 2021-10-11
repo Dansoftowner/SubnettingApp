@@ -37,9 +37,10 @@ private fun printBasicSubnetInfo(ip: IPV4Address) {
 
 private fun printBasicSubnetInfo(subnet: IPV4Subnet) {
     println("Subnet address: ${subnet.subnetAddress}")
-    println("First host address: ${subnet.firstHostAddress}")
-    println("Last host address: ${subnet.lastHostAddress}")
-    println("Broadcast address: ${subnet.broadcastAddress}")
+    println("First host address: ${subnet.firstHostAddress.toString(IPV4Address.ToStringOption.ONLY_ADDRESS)}")
+    println("Last host address: ${subnet.lastHostAddress.toString(IPV4Address.ToStringOption.ONLY_ADDRESS)}")
+    println("Broadcast address: ${subnet.broadcastAddress.toString(IPV4Address.ToStringOption.ONLY_ADDRESS)}")
+    println("Subnet mask: ${subnet.subnetAddress.mask.toString(IPV4Mask.ToStringOption.DOT_DECIMAL_NOTATION)}")
 }
 
 private fun printSubnetPartitions(ip: String, mask: String, hostCounts: List<Int>) {

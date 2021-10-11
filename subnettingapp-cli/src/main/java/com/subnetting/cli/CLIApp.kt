@@ -18,5 +18,5 @@ fun main() {
     println(tasks.mapIndexed { index, cliTask -> "${index + 1}) ${cliTask.name}" }.joinToString("\n"))
 
     val option = readLine()!!.toInt()
-    tasks[option - 1].execute(ip, mask)
+    tasks[option - 1](ip, mask)
 }

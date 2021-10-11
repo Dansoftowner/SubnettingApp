@@ -3,5 +3,5 @@ package com.subnetting.cli
 interface CLITask {
     val name: String
 
-    fun execute(ip: String, mask: String)
+    operator fun invoke(ip: String, mask: String)
 }

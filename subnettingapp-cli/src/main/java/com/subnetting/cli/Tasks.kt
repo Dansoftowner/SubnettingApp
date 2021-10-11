@@ -9,7 +9,7 @@ class SimpleSubnetInfoTask : CLITask {
 
     override val name = "Simple subnet info"
 
-    override fun execute(ip: String, mask: String) {
+    override fun invoke(ip: String, mask: String) {
         printBasicSubnetInfo(ip, mask)
     }
 }
@@ -18,7 +18,7 @@ class SubnetPartitioningTask : CLITask {
 
     override val name = "Subnet partitioning"
 
-    override fun execute(ip: String, mask: String) {
+    override fun invoke(ip: String, mask: String) {
         println("Give the host counts comma separated:")
         val hostCounts = readLine()!!.split(",")
             .map(String::trim)

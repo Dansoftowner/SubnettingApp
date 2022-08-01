@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Options</title>
+</head>
+<body>
+
+    <a th:href="@{'simpleSubnetInfo?ip=' + ${ip} + '&mask=' + ${mask}}">Simple subnet info</a>
+    <a th:href="@{'subnetPartitioning?ip=' + ${ip} + '&mask=' + ${mask}}">Subnet partitioning</a>
+
+</body>
+</html>

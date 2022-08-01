@@ -1,0 +1,11 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+}
+
+dependencies {
+	implementation project(':subnettingapp-core')
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

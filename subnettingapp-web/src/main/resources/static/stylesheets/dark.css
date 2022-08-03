@@ -1,0 +1,31 @@
+@import url("base.css");
+
+body {
+    background-color: #323437;
+    color: white;
+    shadow_color: black;
+}
+
+.container .count-label strong {
+    color: #e2b714;
+}
+
+.entry {
+    background-color: #323437;
+    box-shadow: 5px 5px 50px black;
+}
+
+.entry:hover {
+    box-shadow: 5px 5px 50px 10px black;
+}
+
+.entry .label {
+    color: #e2b714;
+    font-weight: bold;
+}
+
+.index-label {
+    color: #323437;
+    background-color: #e2b714;
+    font-weight: bold;
+}

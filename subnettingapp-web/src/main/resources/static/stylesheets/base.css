@@ -1,7 +1,7 @@
 @import url("https://dev-cats.github.io/code-snippets/JetBrainsMono.css");
 
 body {
-    background-color: #323437;
+    font-family: 'Jetbrains Mono';
 }
 
 .container {
@@ -9,28 +9,20 @@ body {
     justify-content: center;
 }
 
+.container .count-label {
+    text-align: center;
+}
 
 .entry {
     display: block;
-
     transition: box-shadow .2s;
-
     padding: 5px 10px;
-    font-family: 'Jetbrains Mono';
-
     border-radius: 5px;
     background-radius: 5px;
     width: auto;
-    border: 1px solid #gray;
+    border: 1px solid;
     margin-bottom: 15px;
-
-    background-color: #323437;
-    box-shadow: 5px 5px 50px black;
-    color: white;
-}
-
-.entry .label {
-    color: #e2b714;
+    border-width: 0px
 }
 
 .entry table {
@@ -43,14 +35,8 @@ body {
     display: inline;
 }
 
-.entry:hover {
-    box-shadow: 5px 5px 50px 10px black;
-}
-
 .index-label {
     display: inline;
-    color: #323437;
-    background-color: #e2b714;
     padding: 0.3em 0.5em;
     border-radius: 5px;
     background-radius: 5px;

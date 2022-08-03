@@ -3,7 +3,22 @@
 body {
     background-color: #323437;
     color: white;
-    shadow_color: black;
+}
+
+.header {
+}
+
+.header .logo {
+    background-color: #e2b714;
+    color: #323437;
+}
+
+.header a {
+    color: lightgray;
+}
+
+.header a:hover {
+    color: #e2b714;
 }
 
 .container .count-label strong {
@@ -12,11 +27,11 @@ body {
 
 .entry {
     background-color: #323437;
-    box-shadow: 5px 5px 50px black;
+    box-shadow: 2px 2px 20px black;
 }
 
 .entry:hover {
-    box-shadow: 5px 5px 50px 10px black;
+    box-shadow: 2px 2px 20px 5px black;
 }
 
 .entry .label {

@@ -2,10 +2,36 @@
 
 body {
     font-family: 'Jetbrains Mono';
+    margin: 0;
+}
+
+.header {
+    overflow: hidden;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.header .logo {
+    font-weight: bold;
+    font-size: 0.7em;
+    display: inline;
+    padding: 1em 0.5em;
+    background-radius: 5px;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.header a {
+    transition: color .3s;
+    display: inline-block;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .container {
-    padding: 10px;
+    padding: 18px;
     justify-content: center;
 }
 

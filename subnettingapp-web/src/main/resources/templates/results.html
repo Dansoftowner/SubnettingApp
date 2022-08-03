@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Results</title>
-    <link rel="stylesheet" th:href="@{stylesheets/base.css}" href="../static/stylesheets/base.css">
     <link rel="stylesheet" th:href="@{stylesheets/dark.css}" href="../static/stylesheets/dark.css">
 </head>
 <body>
+
+<div class="header">
+    <a href="/">SubnettingApp</a>
+</div>
 
 <div class="container">
     <p class="count-label">Count of subnets: <strong th:text="${entries.size}">1</strong></p>

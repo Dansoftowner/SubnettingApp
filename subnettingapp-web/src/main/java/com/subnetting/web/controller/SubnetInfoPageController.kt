@@ -10,15 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
-@RequestMapping("/simpleSubnetInfo")
+@RequestMapping("/results")
 class SubnetInfoPageController {
 
     @Autowired
     private lateinit var service: SubnetInfoService
 
-    @RequestMapping
-    fun showSubnetInfoPage(model: Model, @RequestParam ip: String, @RequestParam mask: String): String {
-        model["entries"] = listOf(service.getEntry(ip, mask))
+    @GetMapping
+    fun showSubnetInfoPage(
+        model: Model,
+        @RequestParam ip: String,
+        @RequestParam mask: String,
+        @RequestParam task: String,
+        @RequestParam hostCounts: String
+    ): String {
+        model["entries"] = service.getEntries(ip, mask, task, hostCounts)
         return "results"
     }
 }

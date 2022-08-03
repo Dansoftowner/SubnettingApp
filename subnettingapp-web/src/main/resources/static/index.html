@@ -7,11 +7,16 @@
 </head>
 <body>
 
-<form action="options">
+<form action="results">
     <label for="ipField">IP address:</label>
     <input type="text" id="ipField" name="ip" value=""><br/>
     <label for="maskField">Subnet mask:</label>
     <input type="text" id="maskField" name="mask" value=""><br/>
+    <input type="radio" id="simpleInfoBox" name="task" value="si" checked>
+    <label for="simpleInfoBox">Simple subnet info</label>
+    <input type="radio" id="partitioningBox" name="task" value="sp">
+    <label for="partitioningBox">Subnet partitioning:</label>
+    <input type="text" id="hostsCount" name="hostCounts"><br/>
     <input type="submit" value="Go!">
 </form>
 

@@ -6,8 +6,18 @@
 </head>
 <body>
 
-<div th:each="entry : ${entries}">
-  Subnet address: <p th:text="${entry.subnetAddress}"></p>
+<div class="entry" th:each="entry : ${entries}">
+    <label for="sbAddress">Subnet address:</label>
+    <p id="sbAddress" th:text="${entry.subnetAddress}">x.x.x.x</p>
+    <label for="fhAddress">First host address:</label>
+    <p id="fhAddress" th:text="${entry.firstHostAddress}">x.x.x.x</p>
+    <label for="lhAddress">Last host address:</label>
+    <p id="lhAddress" th:text="${entry.lastHostAddress}">x.x.x.x</p>
+    <label for="brAddress">Broadcast address:</label>
+    <p id="brAddress" th:text="${entry.broadcastAddress}">x.x.x.x</p>
+    <label for="mskAddress">Mask:</label>
+    <p id="mskAddress" th:text="${entry.subnetMask}">x.x.x.x</p>
+    <hr>
 </div>
 
 </body>

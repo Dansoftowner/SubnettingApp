@@ -7,9 +7,7 @@
 </head>
 <body>
 
-<div class="header">
-    <a href="/">SubnettingApp</a>
-</div>
+<div th:replace="header.html :: .header"></div>
 
 <form action="results">
     <label for="ipField">IP address:</label>
@@ -23,6 +21,8 @@
     <input type="text" id="hostsCount" name="hostCounts"><br/>
     <input type="submit" value="Go!">
 </form>
+
+<div th:replace="footer.html :: .footer"></div>
 
 </body>
 </html>

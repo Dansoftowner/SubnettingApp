@@ -6,6 +6,7 @@ body {
 }
 
 .header {
+    background-color: #323437;
 }
 
 .header .logo {
@@ -43,4 +44,12 @@ body {
     color: #323437;
     background-color: #e2b714;
     font-weight: bold;
+}
+
+.footer a {
+    color: gray;
+}
+
+.footer a:hover {
+    color: white;
 }

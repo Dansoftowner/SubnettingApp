@@ -7,9 +7,7 @@
 </head>
 <body>
 
-<div class="header">
-    <a href="/">SubnettingApp</a>
-</div>
+<div th:replace="header.html :: .header"></div>
 
 <div class="container">
     <p class="count-label">Count of subnets: <strong th:text="${entries.size}">1</strong></p>
@@ -44,6 +42,8 @@
     </div>
 
 </div>
+
+<div th:replace="footer.html :: .footer"></div>
 
 </body>
 </html>

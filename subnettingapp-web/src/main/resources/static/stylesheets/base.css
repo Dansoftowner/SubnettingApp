@@ -30,12 +30,23 @@ body {
     text-decoration: none;
 }
 
+form {
+    background-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
 form, form * {
     font-size: 1.05em;
 }
 
 form table {
     border-spacing: 10px;
+    width: 100%;
+}
+
+form table tr td:first-child {
+    width: 25%;
 }
 
 form label {
@@ -50,6 +61,7 @@ form input[type="text"] {
     background-radius: 5px;
     border-radius: 5px;
     font: inherit;
+    width: 98%;
 }
 
 form input[type="submit"] {

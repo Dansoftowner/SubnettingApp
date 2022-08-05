@@ -23,6 +23,10 @@ body {
     color: #e2b714;
 }
 
+form {
+    box-shadow: 2px 2px 20px black;
+}
+
 form label {
     color: #e2b714;
 }

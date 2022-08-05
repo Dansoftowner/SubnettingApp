@@ -24,7 +24,11 @@ body {
 }
 
 form {
-    box-shadow: 2px 2px 20px black;
+    box-shadow: 2px 2px 20px #1c1c1c;
+}
+
+form:hover {
+    box-shadow: 2px 2px 20px 5px #1c1c1c;
 }
 
 form label {
@@ -72,11 +76,11 @@ form hr {
 
 .entry {
     background-color: #323437;
-    box-shadow: 2px 2px 20px black;
+    box-shadow: 2px 2px 20px #1c1c1c;
 }
 
 .entry:hover {
-    box-shadow: 2px 2px 20px 5px black;
+    box-shadow: 2px 2px 20px 5px #1c1c1c;
 }
 
 .entry .label {

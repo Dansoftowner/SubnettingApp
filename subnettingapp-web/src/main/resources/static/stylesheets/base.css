@@ -34,10 +34,8 @@ form {
     background-radius: 5px;
     border-radius: 5px;
     padding: 5px;
-}
-
-form, form * {
-    font-size: 1.05em;
+    margin-top: 30px;
+    transition: box-shadow .2s;
 }
 
 form table {

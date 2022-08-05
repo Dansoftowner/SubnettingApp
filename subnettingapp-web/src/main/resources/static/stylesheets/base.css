@@ -30,6 +30,60 @@ body {
     text-decoration: none;
 }
 
+form, form * {
+    font-size: 1.05em;
+}
+
+form table {
+    border-spacing: 10px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="text"] {
+    transition: outline .2s;
+    background-color: #2C2E31;
+    border-width: 0;
+    padding: 10px;
+    background-radius: 5px;
+    border-radius: 5px;
+    font: inherit;
+}
+
+form input[type="submit"] {
+    padding: 10px;
+    width: 100%;
+    transition: background-color .3s;
+    border-width: 0;
+    border-radius: 5px;
+    background-radius: 5px;
+    font: inherit;
+}
+
+form input[type="submit"]:hover {
+    cursor: pointer;
+
+}
+
+form input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.05em;
+    height: 1.05em;
+    border-radius: 50%;
+    margin-right: 7px;
+    transition: background-color .2s;
+    transition: opacity .2s;
+    opacity: 0.8;
+}
+
+form input[type="radio"]:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
 .container {
     padding: 18px;
     justify-content: center;
@@ -73,7 +127,7 @@ body {
 }
 
 .footer {
-display: block;
+    display: block;
     padding: 5px;
     position: fixed;
     left: 0;

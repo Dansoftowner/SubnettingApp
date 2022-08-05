@@ -3,6 +3,7 @@
 body {
     background-color: #323437;
     color: white;
+    accent-color: #e2b714;
 }
 
 .header {
@@ -20,6 +21,45 @@ body {
 
 .header a:hover {
     color: #e2b714;
+}
+
+form label {
+    color: #e2b714;
+}
+
+form input[type="text"] {
+    background-color: #2C2E31;
+    color: white;
+}
+
+form input[type="text"]:focus {
+   outline: 3px solid gray;
+}
+
+form input[type="submit"] {
+    background-color: #2c2e31;
+    color: white;
+
+}
+
+form input[type="submit"]:hover {
+    background-color: #e2b714;
+    color: #2c2e31;
+}
+
+form input[type="radio"] {
+    background: #2c2e31;
+    outline: 2px solid #e2b714;
+
+}
+
+form input[type="radio"]:checked {
+    background: #e2b714;
+    border: 2px solid #2c2e31;
+}
+
+form hr {
+    border: 0px 0px 0px 1px solid #434445;
 }
 
 .container .count-label strong {

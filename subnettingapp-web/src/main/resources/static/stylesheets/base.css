@@ -137,17 +137,37 @@ form input[type="radio"]:hover {
 }
 
 .footer {
-    display: block;
     padding: 5px;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     color: white;
-    text-align: center;
+}
+
+.footer-separator {
+    height: 10px;
+}
+
+.footer .right {
+    padding: 0 10px 0 0;
+    text-align: right;
 }
 
 .footer a {
     transition: color .3s;
     text-decoration: none;
+    margin: 0;
+}
+
+.footer hr {
+    display: inline;
+    width: 1px;
+    height: 3px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.footer label {
+    padding: 0 3px 0 3px;
 }

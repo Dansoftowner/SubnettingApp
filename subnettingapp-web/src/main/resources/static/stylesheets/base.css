@@ -87,6 +87,7 @@ form input[type="radio"] {
     transition: background-color .2s;
     transition: opacity .2s;
     opacity: 0.8;
+    transition: background .2s;
 }
 
 form input[type="radio"]:hover {

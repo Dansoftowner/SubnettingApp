@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Subnetting App</title>
+    <link rel="stylesheet" th:href="@{stylesheets/dark.css}" href="../static/stylesheets/dark.css">
+    <script th:src="@{scripts/form.js}" src="../static/scripts/form.js"></script>
+</head>
+
+<body>
+
+    <div th:replace="header.html :: .header"></div>
+
+    <div class="container">
+        <form action="results">
+
+            <table>
+                <tr>
+                    <td>
+                        <label for="ipField">IP address:</label>
+                        <label class="abbr-label" for="ipField">IP:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="ipField" name="ip" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="maskField">Subnet mask:</label>
+                        <label class="abbr-label" for="maskField">M:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="maskField" name="mask" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="radio" id="simpleInfoBox" name="task" value="si" checked>
+                            <label>Basic subnet info</label>
+                            <label class="abbr-label">Basic</label>
+                        </input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" id="partitioningBox" name="task" value="sp"><label>Subnet
+                            partitioning:</label></input>
+                    </td>
+                    <td>
+                        <input type="text" id="hostsCount" name="hostCounts"><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="submit-td" colspan="2">
+                        <hr />
+                        <input type="submit" value="Calculate">
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
+    </div>
+
+    <div th:replace="footer.html"></div>
+
+</body>
+
+</html>

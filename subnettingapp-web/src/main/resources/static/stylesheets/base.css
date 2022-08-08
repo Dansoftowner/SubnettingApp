@@ -1,9 +1,18 @@
 @import url("fonts.css");
 
+/* General */
+
 body {
     font-family: 'Jetbrains Mono';
     margin: 0;
 }
+
+.container {
+    padding: 18px;
+    justify-content: center;
+}
+
+/* Header */
 
 .header {
     overflow: hidden;
@@ -29,6 +38,9 @@ body {
     font-weight: bold;
     text-decoration: none;
 }
+
+
+/* Form */
 
 form {
     background-radius: 5px;
@@ -95,10 +107,27 @@ form input[type="radio"]:hover {
     opacity: 1;
 }
 
-.container {
-    padding: 18px;
-    justify-content: center;
+form .abbr-label {
+    display: none;
 }
+
+/* Phone devices */
+@media screen and (max-width: 539px) {
+    form label {
+        display: none;
+    }
+
+    form table tr td:first-child {
+        width: 10%;
+    }
+    
+    form .abbr-label {
+        display: inline;
+    }
+}
+
+
+/* Results page */
 
 .container .count-label {
     text-align: center;
@@ -136,6 +165,8 @@ form input[type="radio"]:hover {
     margin: 0;
     margin-top: 5px;
 }
+
+/* Footer */
 
 .footer {
     padding: 5px;

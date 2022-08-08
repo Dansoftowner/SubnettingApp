@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
 @RequestMapping("/results")
-class SubnetInfoPageController {
+class ResultsController {
 
     @Autowired
     private lateinit var service: SubnetInfoService
 
     @GetMapping
-    fun showSubnetInfoPage(
+    fun results(
         model: Model,
         @RequestParam ip: String,
         @RequestParam mask: String,

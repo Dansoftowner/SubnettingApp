@@ -1,0 +1,174 @@
+@import url("fonts.css");
+
+body {
+    font-family: 'Jetbrains Mono';
+    margin: 0;
+}
+
+.header {
+    overflow: hidden;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.header .logo {
+    font-weight: bold;
+    font-size: 0.7em;
+    display: inline;
+    padding: 1em 0.5em;
+    background-radius: 5px;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.header a {
+    transition: color .3s;
+    display: inline-block;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+form {
+    background-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 30px;
+    transition: box-shadow .2s;
+}
+
+form table {
+    border-spacing: 10px;
+    width: 100%;
+}
+
+form table tr td:first-child {
+    width: 25%;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="text"] {
+    transition: outline .2s;
+    background-color: #2C2E31;
+    border-width: 0;
+    padding: 10px;
+    background-radius: 5px;
+    border-radius: 5px;
+    font: inherit;
+    width: 98%;
+}
+
+form input[type="submit"] {
+    padding: 10px;
+    width: 100%;
+    transition: background-color .3s;
+    border-width: 0;
+    border-radius: 5px;
+    background-radius: 5px;
+    font: inherit;
+}
+
+form input[type="submit"]:hover {
+    cursor: pointer;
+
+}
+
+form input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.05em;
+    height: 1.05em;
+    border-radius: 50%;
+    margin-right: 7px;
+    transition: background-color .2s;
+    transition: opacity .2s;
+    opacity: 0.8;
+    transition: background .2s;
+}
+
+form input[type="radio"]:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.container {
+    padding: 18px;
+    justify-content: center;
+}
+
+.container .count-label {
+    text-align: center;
+}
+
+.entry {
+    display: block;
+    transition: box-shadow .2s;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-radius: 5px;
+    width: auto;
+    border: 1px solid;
+    margin-bottom: 15px;
+    border-width: 0px
+}
+
+.entry table {
+    display: inline;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.entry p {
+    display: inline;
+}
+
+.index-label {
+    display: inline;
+    padding: 0.3em 0.5em;
+    border-radius: 5px;
+    background-radius: 5px;
+    float: right;
+    text-align: center;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.footer {
+    padding: 5px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+
+.footer-separator {
+    height: 10px;
+}
+
+.footer .right {
+    padding: 0 10px 0 0;
+    text-align: right;
+}
+
+.footer a {
+    transition: color .3s;
+    text-decoration: none;
+    margin: 0;
+}
+
+.footer hr {
+    display: inline;
+    width: 1px;
+    height: 3px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.footer label {
+    padding: 0 3px 0 3px;
+}

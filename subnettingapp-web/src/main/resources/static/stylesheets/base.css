@@ -110,6 +110,10 @@ form .abbr-label {
     display: none;
 }
 
+form input[type=text]:disabled {
+    opacity: 0.5;
+}
+
 /* Phone devices */
 @media screen and (max-width: 539px) {
     form label {

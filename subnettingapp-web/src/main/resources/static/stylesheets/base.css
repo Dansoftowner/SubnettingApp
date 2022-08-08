@@ -65,7 +65,6 @@ form label {
 
 form input[type="text"] {
     transition: outline .2s;
-    background-color: #2C2E31;
     border-width: 0;
     padding: 10px;
     background-radius: 5px;

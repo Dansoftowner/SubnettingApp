@@ -2,21 +2,23 @@ const SP = "sp";
 const SI = "si";
 
 window.onload = function () {
+    initFieldDisablingBehaviour();
+}
 
-    let listener = (value) => {
-        console.log("radio check detected: " + value);
-        switch(radioButtons.value) {
-            case SP:
-                document.getElementById("hostsCount").removeAttribute("disabled");
-                break;
-            case SI:
-                document.getElementById("hostsCount").setAttribute("disabled", "");
-                break;
-        } 
-    };
+function initFieldDisablingBehaviour() {
+    let hostsCountField = document.getElementById("hostsCount");
+    let radios = document.querySelectorAll("input[type='radio']");
 
-    document.getElementById("partitioningBox").addEventListener("change", () => { listener(SP); });
-    document.getElementById("simpleInfoBox").addEventListener("change", () => { listener(SI); });
+    const listener = function() {
+        console.log("Radio clicked");
+        let partititon = document.getElementById("partitioningBox").checked;
+        hostsCountField.disabled = !partititon;
+        console.log(hostsCountField.disabled);
+    }
 
-   // listener(document.getElementById("partitioningBox").getAttribute("checked") != null ? SP : SI);
+    radios.forEach(it => {
+        it.addEventListener('change', listener);
+    });
+    
+    listener();
 }

@@ -166,6 +166,22 @@ form .abbr-label {
     margin-top: 5px;
 }
 
+.entry .abbr-label {
+    display: none;
+}
+
+/* Phone devices */
+@media screen and (max-width: 425px) {
+    
+    .entry label {
+        display: none;
+    }
+
+    .entry .abbr-label {
+        display: inline;
+    }
+}
+
 /* Footer */
 
 .footer {

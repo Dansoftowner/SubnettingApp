@@ -17,23 +17,38 @@
 
         <table>
             <tr>
-                <td class="label">Subnet address:</td>
+                <td class="label">
+                    <label>Subnet address:</label>
+                    <label class="abbr-label">A:</label>
+                </td>
                 <td class="value" th:text="${entry.subnetAddress}">x.x.x.x</td>
             </tr>
             <tr>
-                <td class="label">First host address:</td>
+                <td class="label">
+                    <label>First host address:</label>
+                    <label class="abbr-label">F:</label>
+                </td>
                 <td class="value" th:text="${entry.firstHostAddress}">x.x.x.x</td>
             </tr>
             <tr>
-                <td class="label">Last host address:</td>
+                <td class="label">
+                    <label>Last host address:</label>
+                    <label class="abbr-label">L:</label>
+                </td>
                 <td class="value" th:text="${entry.lastHostAddress}">x.x.x.x</td>
             </tr>
             <tr>
-                <td class="label">Broadcast address:</td>
+                <td class="label">
+                    <label>Broadcast address:</label>
+                    <label class="abbr-label">B:</label>
+                </td>
                 <td class="value" th:text="${entry.broadcastAddress}">x.x.x.x</td>
             </tr>
             <tr>
-                <td class="label">Mask:</td>
+                <td class="label">
+                    <label>Mask:</label>
+                    <label class="abbr-label">M:</label>
+                </td>
                 <td class="value" th:text="${entry.subnetMask}">x.x.x.x</td>
             </tr>
         </table>

@@ -95,7 +95,6 @@ form input[type="radio"] {
     width: 1.05em;
     height: 1.05em;
     border-radius: 50%;
-    margin-right: 7px;
     transition: background-color .2s;
     transition: opacity .2s;
     opacity: 0.8;

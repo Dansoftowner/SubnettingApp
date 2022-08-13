@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <link rel="stylesheet" th:href="@{stylesheets/dark.css}" href="../static/stylesheets/dark.css">
+</head>
+<body>
+
+<div th:replace="header.html :: .header"></div>
+
+<form method="post">
+    <input name="theme" type="text" th:value="${@appSettings['theme']}">
+    <input type="submit" value="Save">
+</form>
+
+<div th:replace="footer.html"></div>
+
+</body>
+</html>

@@ -8,7 +8,7 @@ import com.subnetting.web.domain.Entry
 import org.springframework.stereotype.Service
 
 @Service
-class SubnetInfoService {
+class ResultsService {
 
     fun getEntries(
         ip: String,

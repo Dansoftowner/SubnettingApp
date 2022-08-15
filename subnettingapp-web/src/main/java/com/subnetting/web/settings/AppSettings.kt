@@ -1,11 +1,11 @@
 package com.subnetting.web.settings
 
-import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
+import org.springframework.web.context.annotation.RequestScope
 import javax.servlet.http.HttpServletRequest
 
 @Component
-@Scope("request")
+@RequestScope
 class AppSettings(request: HttpServletRequest) : MutableMap<String, String> by HashMap() {
 
     init {

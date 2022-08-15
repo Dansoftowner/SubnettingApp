@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
+    id 'org.jetbrains.kotlin.jvm' version "${KOTLIN_VERSION}"
     id 'java'
 }
 
@@ -16,12 +16,12 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'org.jetbrains.kotlin.jvm'
 
-    sourceCompatibility = '16'
-    targetCompatibility = '16'
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
 
     compileKotlin {
         kotlinOptions {
-            jvmTarget = '16'
+            jvmTarget = '17'
         }
     }
 

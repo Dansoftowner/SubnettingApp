@@ -199,7 +199,16 @@ form input[type=text]:disabled {
     height: 10px;
 }
 
+.footer .left {
+    display: inline;
+    float: left;
+    padding: 0 10px 0 0;
+    text-align: left;
+}
+
 .footer .right {
+    display: inline;
+    float: right;
     padding: 0 10px 0 0;
     text-align: right;
 }

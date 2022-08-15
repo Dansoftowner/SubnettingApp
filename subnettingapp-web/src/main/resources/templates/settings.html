@@ -9,10 +9,21 @@
 
 <div th:replace="header.html :: .header"></div>
 
-<form method="post">
-    <input name="theme" type="text" th:value="${@appSettings['theme']}">
-    <input type="submit" value="Save">
-</form>
+<div class="container">
+    <form method="post">
+
+        <div th:each="configEntry : ${@appSettings.keySet()}">
+            <label th:text="${configEntry.localizedName}"></label>
+            <select th:name="${configEntry.name}">
+                <option th:each="option : ${configEntry.options}" th:value="${option.name}"
+                        th:text="${option.localizedName}" th:selected="${option == @appSettings.get(configEntry)}">
+                </option>
+            </select>
+        </div>
+
+        <input type="submit" value="Save">
+    </form>
+</div>
 
 <div th:replace="footer.html"></div>
 

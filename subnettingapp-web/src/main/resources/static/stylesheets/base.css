@@ -5,6 +5,11 @@
 body {
     font-family: 'Jetbrains Mono';
     margin: 0;
+    height: 100%;
+}
+
+html {
+    height: 100%;
 }
 
 .container {
@@ -122,7 +127,7 @@ form input[type=text]:disabled {
     form table tr td:first-child {
         width: 10%;
     }
-    
+
     form .abbr-label {
         display: inline;
     }
@@ -174,7 +179,7 @@ form input[type=text]:disabled {
 
 /* Phone devices */
 @media screen and (max-width: 425px) {
-    
+
     .entry label {
         display: none;
     }
@@ -182,6 +187,39 @@ form input[type=text]:disabled {
     .entry .abbr-label {
         display: inline;
     }
+}
+
+/* Config page */
+#configPage {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: inherit;
+  color: inherit;
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 20px;
+  transition: outline .2s;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.container.config-page-container {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+}
+
+.container.config-page-container form h2 {
+    margin-top: 0;
+    text-align: center;
 }
 
 /* Footer */

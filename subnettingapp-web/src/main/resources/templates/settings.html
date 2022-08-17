@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Settings</title>
     <link rel="stylesheet" th:href="@{stylesheets/dark.css}" href="../static/stylesheets/dark.css">
 </head>
+
 <body>
 
-<div th:replace="header.html :: .header"></div>
+    <div th:replace="header.html :: .header"></div>
 
-<div class="container">
-    <form method="post">
+    <div class="container config-page-container">
+        <form method="post">
+            <div>
+                <h2>Settings</h2>
+            </div>
+            <div id="configPage">
+                <div th:each="configEntry : ${@appSettings.keySet()}">
+                    <label th:text="${configEntry.localizedName} + ':'" th:for="${configEntry.name} + '-select'"
+                        for="config-select">Setting:</label>
+                    <select th:name="${configEntry.name}" th:id="${configEntry.name} + '-select'" id="config-select">
+                        <option th:each="option : ${configEntry.options}" th:value="${option.name}"
+                            th:text="${option.localizedName}" th:selected="${option == @appSettings.get(configEntry)}">
+                            Option
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" value="Save">
+        </form>
+    </div>
 
-        <div th:each="configEntry : ${@appSettings.keySet()}">
-            <label th:text="${configEntry.localizedName}" th:for="${configEntry.name} + '-select'" for="config-select">Setting:</label>
-            <select th:name="${configEntry.name}" th:id="${configEntry.name} + '-select'" id="config-select">
-                <option th:each="option : ${configEntry.options}" th:value="${option.name}"
-                        th:text="${option.localizedName}" th:selected="${option == @appSettings.get(configEntry)}">
-                    Option
-                </option>
-            </select>
-        </div>
-
-        <input type="submit" value="Save">
-    </form>
-</div>
-
-<div th:replace="footer.html"></div>
+    <div th:replace="footer.html"></div>
 
 </body>
+
 </html>

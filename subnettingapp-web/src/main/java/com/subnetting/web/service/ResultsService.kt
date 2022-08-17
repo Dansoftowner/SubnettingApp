@@ -14,12 +14,12 @@ class ResultsService {
         ip: String,
         mask: String,
         task: String,
-        hostCounts: String
+        hostCounts: String?
     ): List<Entry> = when (task) {
         "si" -> listOf(getEntry(ip, mask))
         "sp" -> getPartitionedEntries(
             ip, mask,
-            hostCounts
+            hostCounts!!
                 .split(",")
                 .map(String::trim)
                 .map(String::toInt)

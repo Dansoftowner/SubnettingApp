@@ -18,7 +18,7 @@ class ResultsController(private val service: ResultsService) {
         @RequestParam ip: String,
         @RequestParam mask: String,
         @RequestParam task: String,
-        @RequestParam hostCounts: String
+        @RequestParam(required = false) hostCounts: String?
     ): String {
         model["entries"] = service.getEntries(ip, mask, task, hostCounts)
         return "results"

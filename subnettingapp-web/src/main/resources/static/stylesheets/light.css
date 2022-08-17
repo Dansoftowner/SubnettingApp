@@ -1,0 +1,151 @@
+@import url("base.css");
+
+/* General */
+
+:root {
+    --background: white;
+    --accent-color: #e2b714;
+    --shadow-color: #1c1c1c62;
+    --shadow-hover-color: #1c1c1c7c;
+}
+
+body {
+    background-color: var(--background);
+    color: black;
+    accent-color: var(--accent-color);
+}
+
+/* Header */
+
+.header {
+    background-color: transparent;
+}
+
+
+.header a {
+    color: #6f737a;
+}
+
+.header a:hover {
+    color: var(--accent-color);
+}
+
+/* Form */
+
+form {
+    box-shadow: 2px 2px 20px var(--shadow-color);
+}
+
+form:hover {
+    box-shadow: 2px 2px 20px 5px var(--shadow-hover-color);
+}
+
+form label {
+    color: #8a6d06;
+}
+
+form input[type="text"] {
+    background-color: rgb(226, 226, 226);
+    color: rgb(36, 35, 35);
+}
+
+form input[type="text"]:focus {
+   outline: 3px solid rgb(121, 121, 121);
+}
+
+form input[type="submit"] {
+    background-color: lightgray;
+    color: rgb(36, 35, 35);
+
+}
+
+form input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: #2c2e31;
+}
+
+form input[type="radio"] {
+    background: rgb(226, 226, 226);
+    outline: 2px solid gray;
+
+}
+
+form input[type="radio"]:checked {
+    background: #8a6d06;
+    border: 2px solid rgb(226, 226, 226);
+}
+
+form hr {
+    height: 1px;
+    background-color: #ccc;
+    border: none;
+}
+
+form input[type=text].error {
+    color: red;
+    outline: red solid 2px;
+}
+
+/* Results page */
+
+.container .count-label strong {
+    color: #80660a;
+}
+
+.entry {
+    background-color: var(--background);
+    box-shadow: 2px 2px 20px var(--shadow-color);
+}
+
+.entry:hover {
+    box-shadow: 2px 2px 20px 5px var(--shadow-hover-color);
+}
+
+.entry .label {
+    color: #80660a;
+    font-weight: bold;
+}
+
+.index-label {
+    color: #323437;
+    background-color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Config page */
+
+select {
+    background-color: lightgray;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 5px;
+    border: none;
+}
+
+select:hover, select:focus {
+    outline: 3px solid gray;
+}
+
+.container.config-page-container form h2 {
+    color: rgb(121, 121, 121);
+}
+
+
+/* Footer */
+
+.footer {
+    background: #e9e9e9;
+}
+
+.footer a, .footer label {
+    color: #6f737a;
+}
+
+.footer a:hover {
+    color: #323538;
+}
+
+.footer hr {
+    border: 1px solid #ccc;
+}

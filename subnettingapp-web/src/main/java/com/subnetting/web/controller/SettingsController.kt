@@ -1,6 +1,7 @@
 package com.subnetting.web.controller
 
 import com.subnetting.web.settings.AppSettings
+import com.subnetting.web.settings.ConfigEntries
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -23,7 +24,7 @@ class SettingsController(private val appSettings: AppSettings) {
 
     @PostMapping
     fun saveSettings(request: HttpServletRequest, response: HttpServletResponse): String {
-        AppSettings.configurableProperties.forEach {
+        appSettings.keys.map { it.name }.forEach {
             request.getParameter(it)?.let { value ->
                 appSettings[it] = value
                 response.addCookie(Cookie(it, value))

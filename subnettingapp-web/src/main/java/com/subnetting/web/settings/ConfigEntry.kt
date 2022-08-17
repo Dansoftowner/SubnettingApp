@@ -1,6 +1,11 @@
 package com.subnetting.web.settings
 
-open class ConfigEntry(val name: String, val localizedName: String = name, val options: List<Option>, val defaultValue: Option) {
+data class ConfigEntry @JvmOverloads constructor(
+    val name: String = "",
+    val localizedName: String = name,
+    val options: List<Option> = emptyList(),
+    val defaultValue: Option = Option("")
+) {
 
     override fun toString(): String {
         return name
@@ -23,7 +28,10 @@ open class ConfigEntry(val name: String, val localizedName: String = name, val o
         return name.hashCode()
     }
 
-    class Option(val name: String, val localizedName: String = name) {
+    class Option @JvmOverloads constructor(
+        val name: String = "",
+        val localizedName: String = name
+    ) {
 
         override fun toString(): String {
             return name

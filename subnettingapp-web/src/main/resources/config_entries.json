@@ -1,0 +1,21 @@
+[
+  {
+    "name": "theme",
+    "localizedName": "theme",
+    "options": [
+      {
+        "name": "dark",
+        "localizedName": "dark"
+      },
+      {
+        "name": "light",
+        "localizedName": "light"
+      },
+      {
+        "name": "auto",
+        "localizedName": "auto"
+      }
+    ],
+    "defaultValue": "dark"
+  }
+]

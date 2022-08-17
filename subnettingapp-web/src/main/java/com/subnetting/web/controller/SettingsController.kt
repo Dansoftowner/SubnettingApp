@@ -23,7 +23,7 @@ class SettingsController(private val appSettings: AppSettings) {
 
     @PostMapping
     fun saveSettings(request: HttpServletRequest, response: HttpServletResponse): String {
-        AppSettings.configurableProperties.forEach {
+        appSettings.keys.map { it.name }.forEach {
             request.getParameter(it)?.let { value ->
                 appSettings[it] = value
                 response.addCookie(Cookie(it, value))

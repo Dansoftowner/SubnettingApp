@@ -13,10 +13,11 @@
     <form method="post">
 
         <div th:each="configEntry : ${@appSettings.keySet()}">
-            <label th:text="${configEntry.localizedName}"></label>
-            <select th:name="${configEntry.name}">
+            <label th:text="${configEntry.localizedName}" th:for="${configEntry.name} + '-select'" for="config-select">Setting:</label>
+            <select th:name="${configEntry.name}" th:id="${configEntry.name} + '-select'" id="config-select">
                 <option th:each="option : ${configEntry.options}" th:value="${option.name}"
                         th:text="${option.localizedName}" th:selected="${option == @appSettings.get(configEntry)}">
+                    Option
                 </option>
             </select>
         </div>

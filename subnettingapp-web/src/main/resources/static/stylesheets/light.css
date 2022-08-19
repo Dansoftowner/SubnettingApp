@@ -149,3 +149,28 @@ select:hover, select:focus {
 .footer hr {
     border: 1px solid #ccc;
 }
+
+/* Error page */
+.container.error {
+    margin: auto;
+    text-align: center;
+
+}
+
+.container.error h1 {
+    color: red;
+}
+
+.container.error h2 {
+    color: #6f737a;
+}
+
+.container.error table {
+    text-align: left;
+    margin: auto;
+}
+
+.container.error table .format-cell span {
+    border-radius: 5px;
+    background-color: #e0e0e0;
+}

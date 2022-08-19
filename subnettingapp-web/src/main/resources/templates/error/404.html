@@ -1,6 +1,6 @@
 <!--
   ~ SubnettingApp
-  ~ Copyright (c) 2022.
+  ~ Copyright (c) 2022. 
   ~
   ~ This program is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -16,5 +16,24 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<link rel="stylesheet" th:href="'/stylesheets/' + ${@appSettings.get('theme').name} + '.css'"
-      href="../static/stylesheets/dark.css" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+    <link rel="stylesheet" th:replace="theme.html" href="../static/stylesheets/dark.css">
+</head>
+<body>
+
+<div th:replace="header.html :: .header"></div>
+
+<div class="container error">
+    <h1><strong>404</strong></h1>
+    <h2>The page '<span th:text="${path}"></span>' does not exist.</h2>
+</div>
+
+<div th:replace="footer.html"></div>
+
+</body>
+</html>

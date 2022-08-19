@@ -267,3 +267,28 @@ select:hover {
 .footer label {
     padding: 0 3px 0 3px;
 }
+
+/* Error page */
+
+@keyframes flash {
+   0% { opacity: 0.2; }
+   50% { opacity: 1; }
+   100% { opacity: 0.2 }
+}
+
+.container.error h1 {
+    animation: flash;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+
+.container.error {
+    margin: auto;
+    text-align: center;
+}
+
+.container.error table {
+    text-align: left;
+    margin: auto;
+}

@@ -1,0 +1,70 @@
+<!--
+  ~ SubnettingApp
+  ~ Copyright (c) 2022. 
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+    <link rel="stylesheet" th:replace="theme.html" href="../static/stylesheets/dark.css">
+</head>
+<body>
+
+<div th:replace="header.html :: .header"></div>
+
+<div class="container error">
+    <h1>Oops. Something went wrong.</h1>
+    <h2>You may specified the IP, mask or the host-counts in the wrong format!</h2>
+    <h3>Correct formats are:</h3>
+    <table>
+        <tr>
+            <td>
+                IP Address:
+            </td>
+            <td class="format-cell">
+                <span>X.X.X.X</span> where 'X' is a number between 0-255
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Subnet mask:
+            </td>
+            <td class="format-cell">
+                <span>X.X.X.X</span> where 'X' is a number between 0-255,
+                or
+                <span>/X</span> where 'X' is a number between 0-31
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Host counts:
+            </td>
+            <td class="format-cell">
+                <span>r,r,r,r....</span>, where 'r's are custom numbers e.g <span>15,34,12,1,4</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<div th:replace="footer.html"></div>
+
+</body>
+</html>

@@ -73,7 +73,9 @@ form input[type="radio"]:checked {
 }
 
 form hr {
-    border: 0px 0px 0px 1px solid #434445;
+    height: 1px;
+    background-color: rgba(204, 204, 204, 0.356);
+    border: none;
 }
 
 form input[type=text].error {

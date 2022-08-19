@@ -151,11 +151,6 @@ select:hover, select:focus {
 }
 
 /* Error page */
-.container.error {
-    margin: auto;
-    text-align: center;
-
-}
 
 .container.error h1 {
     color: red;
@@ -163,11 +158,6 @@ select:hover, select:focus {
 
 .container.error h2 {
     color: #6f737a;
-}
-
-.container.error table {
-    text-align: left;
-    margin: auto;
 }
 
 .container.error table .format-cell span {

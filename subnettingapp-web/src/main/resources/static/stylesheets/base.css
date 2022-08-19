@@ -30,7 +30,6 @@ html {
     font-size: 0.7em;
     display: inline;
     padding: 1em 0.5em;
-    background-radius: 5px;
     border-radius: 5px;
     margin: 0;
 }
@@ -48,7 +47,6 @@ html {
 /* Form */
 
 form {
-    background-radius: 5px;
     border-radius: 5px;
     padding: 5px;
     margin-top: 30px;
@@ -90,7 +88,10 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
     cursor: pointer;
+}
 
+form input[type="submit"]:disabled {
+    opacity: 0.5;
 }
 
 form input[type="radio"] {
@@ -145,7 +146,6 @@ form input[type=text]:disabled {
     transition: box-shadow .2s;
     padding: 5px 10px;
     border-radius: 5px;
-    background-radius: 5px;
     width: auto;
     border: 1px solid;
     margin-bottom: 15px;
@@ -166,7 +166,6 @@ form input[type=text]:disabled {
     display: inline;
     padding: 0.3em 0.5em;
     border-radius: 5px;
-    background-radius: 5px;
     float: right;
     text-align: center;
     margin: 0;

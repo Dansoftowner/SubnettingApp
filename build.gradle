@@ -1,7 +1,6 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version "${KOTLIN_VERSION}"
     id 'java'
-    id 'application'
 }
 
 allprojects {
@@ -34,25 +33,5 @@ subprojects {
         implementation "org.jetbrains.kotlin:kotlin-stdlib"
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    }
-}
-
-def runtimeProjectName = "project"
-def runtimeDestination = "$rootDir/build/$runtimeProjectName"
-
-project(":subnettingapp-web") {
-    mainClassName = "com.subnetting.web.SubnettingWebApplicationKt"
-    task stage(dependsOn: ['clean', 'installDist'])
-    installDist {
-        doLast {
-            mkdir(runtimeDestination)
-            copy {
-                from "$projectDir"
-                into "$runtimeDestination"
-            }
-            file("$runtimeDestination/build/install/$System.env.PROJECT").renameTo(file("$runtimeDestination/build/install/$runtimeProjectName"))
-            file("$runtimeDestination/build/install/$runtimeProjectName/bin/$System.env.PROJECT").renameTo(file("$runtimeDestination/build/install/$runtimeProjectName/bin/$runtimeProjectName"))
-            file("$runtimeDestination/build/install/$runtimeProjectName/bin/$System.env.PROJECT" +".bat").renameTo(file("$runtimeDestination/build/install/$runtimeProjectName/bin/$runtimeProjectName" + ".bat"))
-        }
     }
 }

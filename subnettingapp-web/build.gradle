@@ -4,6 +4,8 @@ plugins {
 	id "org.jetbrains.kotlin.plugin.spring" version "${KOTLIN_VERSION}"
 }
 
+task stage(dependsOn: ['bootJar'])
+
 dependencies {
 	implementation project(':subnettingapp-core')
 	implementation 'org.springframework.boot:spring-boot-starter-web'

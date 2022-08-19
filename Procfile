@@ -1,1 +1,1 @@
-web: java -jar subnettingapp-web/build/libs/subnettingapp-web-1.0-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar subnettingapp-web/build/libs/subnettingapp-web-1.0-SNAPSHOT.jar

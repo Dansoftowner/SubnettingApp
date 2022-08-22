@@ -2,6 +2,8 @@
   {
     "name": "theme",
     "localizedName": "theme",
+    "group": null,
+    "type": "select",
     "options": [
       {
         "name": "dark",
@@ -17,5 +19,42 @@
       }
     ],
     "defaultValue": "dark"
+  },
+  {
+    "name": "auto_mask",
+    "localizedName" : "Calculate masks automatically",
+    "group" : {
+      "name": "auto_mask",
+      "localizedName": "Automatic mask calculation"
+    },
+    "type" : "checkbox",
+    "options" : [
+      {
+        "name" : "true"
+      },
+      {
+        "name" : "false"
+      }
+    ],
+    "defaultValue" : "true"
+  },
+  {
+    "name": "auto_mask_format",
+    "localizedName": "auto mask format",
+    "group": {
+      "name": "auto_mask"
+    },
+    "type": "select",
+    "options": [
+      {
+        "name": "cdir",
+        "localizedName": "CDir format (/x)"
+      },
+      {
+        "name": "ddn",
+        "localizedName": "Dot decimal notation (x.x.x.x)"
+      }
+    ],
+    "defaultValue": "cdir"
   }
 ]

@@ -1,3 +1,8 @@
+const ipPattern = new RegExp("\\d+\\.\\d+\\.\\d+\\.\\d+");
+const cDirPattern = new RegExp("/\\d+");
+const listPattern = new RegExp("(\\d+)(,\\s*\\d+)*");
+
+
 window.onload = function () {
     initFieldDisablingBehaviour();
     initValueCheckingPolicy();
@@ -22,9 +27,6 @@ function initFieldDisablingBehaviour() {
 }
 
 function initValueCheckingPolicy() {
-    const ipPattern = new RegExp("\\d+\\.\\d+\\.\\d+\\.\\d+");
-    const cDirPattern = new RegExp("/\\d+");
-    const listPattern = new RegExp("(\\d+)(,\\s*\\d+)*");
 
     const ipField = document.getElementById("ipField");
     const maskField = document.getElementById("maskField");
@@ -37,14 +39,48 @@ function initValueCheckingPolicy() {
         else field.classList.remove("error");
     };
 
-    const ipFieldListener = () => { operate(ipField, it => match(ipPattern, it)); };
-    const maskFieldListener = () => { operate(maskField, it => (match(ipPattern, it) || match(cDirPattern, it))); };
+    const ipFieldListener = () => { operate(ipField, it => matchesIpPattern(it)); };
+    const maskFieldListener = () => { operate(maskField, it => matchesMaskPattern(it)); };
     const hostsCountFieldListener = () => { operate(hostsCountField, it => match(listPattern, it)); };
 
     ipField.addEventListener('input', ipFieldListener);
     maskField.addEventListener('input', maskFieldListener);
     hostsCountField.addEventListener('input', hostsCountFieldListener);
 }
+
+function matchesIpPattern(ipAddress) {
+    if (match(ipPattern, ipAddress)) {
+        for (octet of ipAddress.split(".").map(it => Number.parseInt(it))) 
+            if (Number.isNaN(octet) || octet < 0 || octet > 255)
+                return false;
+    
+        return true;
+    }
+
+    return false;
+}
+
+function matchesMaskPattern(mask) {
+    if (matchesIpPattern(mask)) {
+        const octets = mask.split(",").map(it => Number.parseInt(it));
+        for (i = 1; i < octets.length; i++) {
+            let prev = octets[i -1];
+            let current = octets[i];
+
+            if (current > prev)
+                return false;
+        }
+
+        return true;
+    }
+    if (match(cDirPattern, mask)) {
+        const maskNum = Number.parseInt(mask.substring(1));
+        return maskNum > 0 && maskNum < 33;
+    }
+
+    return false;
+}
+
 
 function match(regex, value) {
     const parts = regex.exec(value);

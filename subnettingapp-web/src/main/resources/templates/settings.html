@@ -40,12 +40,19 @@
                 <div th:each="configEntry : ${@appSettings.keySet()}">
                     <label th:text="${configEntry.localizedName} + ':'" th:for="${configEntry.name} + '-select'"
                         for="config-select">Setting:</label>
-                    <select th:name="${configEntry.name}" th:id="${configEntry.name} + '-select'" id="config-select">
+                    <select th:if="${configEntry.type} == 'select'" th:name="${configEntry.name}" th:id="${configEntry.name} + '-select'" id="config-select">
                         <option th:each="option : ${configEntry.options}" th:value="${option.name}"
                             th:text="${option.localizedName}" th:selected="${option == @appSettings.get(configEntry)}">
                             Option
                         </option>
                     </select>
+                    <input th:if="${configEntry.type} == 'checkbox'"
+                           th:name="${configEntry.name}" th:id="${configEntry.name} + '-check'"
+                           th:checked="${@appSettings.get(configEntry).name == 'true'}"
+                           id="config-check"
+                           value="true"
+                           type="checkbox">
+
                 </div>
             </div>
             <input type="submit" value="Save">

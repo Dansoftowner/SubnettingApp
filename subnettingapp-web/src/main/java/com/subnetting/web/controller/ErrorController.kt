@@ -41,9 +41,9 @@ class ErrorController : org.springframework.boot.web.servlet.error.ErrorControll
         }
     }
 
-    private val HttpServletRequest.path get() = getAttribute(RequestDispatcher.ERROR_REQUEST_URI).toString()
+    private val HttpServletRequest.path get() = getAttribute(RequestDispatcher.ERROR_REQUEST_URI)?.toString()
 
-    private fun HttpServletRequest.isFromResultsPage() = path.contains("/results")
+    private fun HttpServletRequest.isFromResultsPage() = path?.contains("/results") ?: false
 
     private fun HttpServletResponse.is404() =
         status == 404

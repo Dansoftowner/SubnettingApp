@@ -41,9 +41,7 @@
   {
     "name": "auto_mask_format",
     "localizedName": "auto mask format",
-    "group": {
-      "name": "auto_mask"
-    },
+    "group": "auto_mask",
     "type": "select",
     "options": [
       {

@@ -132,6 +132,10 @@ select:hover, select:focus {
 }
 
 
+.group-page .group-span {
+    border-bottom: 1px solid lightgray;
+}
+
 /* Footer */
 
 .footer {

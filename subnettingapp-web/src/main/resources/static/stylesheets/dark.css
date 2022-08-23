@@ -124,6 +124,10 @@ select:hover, select:focus {
     outline: 3px solid gray;
 }
 
+.group-page .group-span {
+    border-bottom: 1px solid gray;
+}
+
 
 /* Footer */
 

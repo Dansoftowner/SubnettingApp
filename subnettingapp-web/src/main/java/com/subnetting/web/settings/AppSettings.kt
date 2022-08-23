@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest
 
 @Component
 @RequestScope
-class AppSettings(request: HttpServletRequest, private val configEntries: List<ConfigEntry>) : MutableMap<ConfigEntry, Option> by HashMap() {
+class AppSettings(request: HttpServletRequest, private val configEntries: List<ConfigEntry>) : MutableMap<ConfigEntry, Option> by LinkedHashMap() {
 
     private val List<ConfigEntry>.configNames get() = map { it.name }
 
@@ -56,6 +56,8 @@ class AppSettings(request: HttpServletRequest, private val configEntries: List<C
         val configEntry = configEntries.toConfigEntry(entryName)!!
         set(configEntry, configEntry.toOption(optionName)!!)
     }
+
+    fun getEntriesByGroup() : Map<ConfigEntry.Group?, List<ConfigEntry>> = keys.groupBy { it.group }
 
     private fun List<ConfigEntry>.toConfigEntry(entryName: String) = find { it.name == entryName }
 }

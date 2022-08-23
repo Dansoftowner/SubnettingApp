@@ -1,3 +1,21 @@
+/*
+ * SubnettingApp
+ * Copyright (c) 2022.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.subnetting.ipv4
 
 /**
@@ -12,10 +30,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val subnetAddress: IPV4Address by lazy {
         IPV4Address(
-            ipAddress[0].and(ipAddress.mask[0]),
-            ipAddress[1].and(ipAddress.mask[1]),
-            ipAddress[2].and(ipAddress.mask[2]),
-            ipAddress[3].and(ipAddress.mask[3]),
+            ipAddress.ipValue.and((ipAddress.mask.asNumber())),
             ipAddress.mask
         )
     }
@@ -25,10 +40,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val firstHostAddress: IPV4Address by lazy {
         IPV4Address(
-            subnetAddress[0],
-            subnetAddress[1],
-            subnetAddress[2],
-            subnetAddress[3].plus(1u).toUByte(),
+            subnetAddress.ipValue + 1,
             subnetAddress.mask
         )
     }
@@ -38,10 +50,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val lastHostAddress: IPV4Address by lazy {
         IPV4Address(
-            broadcastAddress[0],
-            broadcastAddress[1],
-            broadcastAddress[2],
-            broadcastAddress[3].minus(1u).toUByte(),
+            broadcastAddress.ipValue -1,
             broadcastAddress.mask
         )
     }
@@ -50,28 +59,8 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      * Gives the broadcast address
      */
     val broadcastAddress: IPV4Address by lazy {
-        // TODO: find a more efficient way to calculate the broadcast address
-        val newOctets = subnetAddress.octets.mapIndexed { index, it ->
-            val maskForOctet = subnetAddress.mask[index]
-            val maskOneBits = maskForOctet.countOneBits()
-            if (maskOneBits == 8) {
-                it
-            } else {
-                var binaryString = it.toString(2)
-                binaryString = "0".repeat(8 - binaryString.length) + binaryString
-                val filledBinaryString = binaryString.replaceRange(
-                    maskOneBits,
-                    binaryString.length,
-                    "1".repeat(binaryString.length - maskOneBits)
-                )
-                filledBinaryString.toUByte(2)
-            }
-        }
         IPV4Address(
-            newOctets[0],
-            newOctets[1],
-            newOctets[2],
-            newOctets[3],
+            subnetAddress.ipValue.or((subnetAddress.mask.asNumber().inv())),
             subnetAddress.mask
         )
     }

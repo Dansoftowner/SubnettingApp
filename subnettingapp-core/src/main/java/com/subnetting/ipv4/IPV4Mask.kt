@@ -1,3 +1,21 @@
+/*
+ * SubnettingApp
+ * Copyright (c) 2022.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.subnetting.ipv4
 
 import com.subnetting.IPV4_ADDRESS_PATTERN
@@ -21,7 +39,7 @@ class IPV4Mask(val bitCount: Int) {
         when {
             stringFormat.matches(Regex(MASK_CIDR_PATTERN)) -> {
                 val numberValue = stringFormat.substring(1).toInt()
-                require(numberValue <= 32) // TODO: ask
+                require(numberValue in 1..32) // TODO: ask
                 numberValue
             }
             stringFormat.matches(Regex(IPV4_ADDRESS_PATTERN)) -> {
@@ -59,20 +77,42 @@ class IPV4Mask(val bitCount: Int) {
         // remainedBits = 25 - (3 * 8) = 1
     }
 
+    fun asNumber(): Int {
+        val num = 1.shl(bitCount -1)
+        return num.or(num - 1).shl(32 -bitCount)
+    }
+
     override fun toString(): String {
         return toString(ToStringOption.CIDR_NOTATION)
     }
 
     fun toString(option: ToStringOption): String {
-        return when(option) {
-            ToStringOption.CIDR_NOTATION -> "/$bitCount"
-            ToStringOption.DOT_DECIMAL_NOTATION -> "${this[0]}.${this[1]}.${this[2]}.${this[3]}"
-        }
+        return option.toString(bitCount)
     }
 
     enum class ToStringOption {
-        CIDR_NOTATION,
-        DOT_DECIMAL_NOTATION
+        CIDR_NOTATION {
+            override fun toString(bitCount: Int) = "/$bitCount"
+        },
+        DOT_DECIMAL_NOTATION {
+            override fun toString(bitCount: Int): String {
+                val stringBuilder = StringBuilder()
+                var bc = bitCount
+                for (i in 1..4) {
+                    var octet = 0
+                    for (k in 7 downTo 0) {
+                        if (bc == 0) break
+                        octet = octet.or(1.shl(k))
+                        bc--
+                    }
+                    stringBuilder.append(octet)
+                    stringBuilder.append(if (i != 4) "." else "")
+                }
+                return stringBuilder.toString()
+            }
+        };
+
+        abstract fun toString(bitCount: Int): String
     }
 
 }

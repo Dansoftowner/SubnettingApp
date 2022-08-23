@@ -1,3 +1,21 @@
+/*
+ * SubnettingApp
+ * Copyright (c) 2022.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.subnetting.web.controller
 
 import com.subnetting.web.settings.AppSettings
@@ -20,13 +38,12 @@ class SettingsController(private val appSettings: AppSettings) {
         return "settings"
     }
 
-
     @PostMapping
     fun saveSettings(request: HttpServletRequest, response: HttpServletResponse): String {
-        appSettings.keys.map { it.name }.forEach {
-            request.getParameter(it)?.let { value ->
-                appSettings[it] = value
-                response.addCookie(Cookie(it, value))
+        appSettings.keys.forEach { config ->
+            (request.getParameter(config.name) ?: "false".takeIf { config.type == "checkbox" })?.let { value ->
+                appSettings[config.name] = value
+                response.addCookie(Cookie(config.name, value))
             }
         }
         return page()

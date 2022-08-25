@@ -27,26 +27,18 @@ import com.subnetting.IPV4_ADDRESS_PATTERN
  */
 class IPV4Address(
     /**
-     * The number that actually stores the IP address.
+     * The Int representation of the IPv4 address.
      *
      * Since it's an Int that uses 4 bytes,
      * it's perfectly capable to store a 32-bit Ipv4 address.
      */
-    val ipValue: Int,
+    val intValue: Int,
 
     /**
      * The object representing the corresponding subnet mask.
      */
-    val mask: IPV4Mask,
-
-    stringFormat: String? = null
+    val mask: IPV4Mask
 ) {
-
-    /**
-     * The dot separated format of the ip address
-     */
-    val stringFormat: String =
-        stringFormat ?: ToStringOption.ONLY_ADDRESS.toString(this, IPV4Mask.ToStringOption.CIDR_NOTATION)
 
     /**
      * Constructs the ipv4 address from the given string and mask
@@ -55,20 +47,30 @@ class IPV4Address(
      *                     it should not contain the subnet mask
      * @param mask the subnet mask representation
      */
-    constructor(stringFormat: String, mask: IPV4Mask) : this(toIpNumber(stringFormat), mask, stringFormat)
+    constructor(stringFormat: String, mask: IPV4Mask) : this(toIpIntValue(stringFormat), mask)
 
+    /**
+     * Converts the IPv4 address into a string with this format: "x.x.x.x /mask".
+     */
     override fun toString(): String = toString(ToStringOption.ADDRESS_AND_MASK)
 
+    /**
+     * Converts the IPv4 address to a string based on the given conditions.
+     *
+     * @param format the [IPV4Address.ToStringOption] representing the desired format
+     * @param maskFormat only has a role if the [format] is [IPV4Address.ToStringOption.ADDRESS_AND_MASK];
+     * it's [IPV4Mask.ToStringOption.CIDR_NOTATION] by default.
+     */
     fun toString(
-        option: ToStringOption,
+        format: ToStringOption,
         maskFormat: IPV4Mask.ToStringOption = IPV4Mask.ToStringOption.CIDR_NOTATION
-    ): String = option.toString(this, maskFormat)
+    ): String = format.toString(this, maskFormat)
 
     companion object {
-        fun toIpNumber(stringFormat: String): Int {
-            require(stringFormat.matches(Regex(IPV4_ADDRESS_PATTERN)))
+        private fun toIpIntValue(ipString: String): Int {
+            require(ipString.matches(Regex(IPV4_ADDRESS_PATTERN)))
             var ipNumber = 0
-            stringFormat.split(".").map { it.toInt() }.forEachIndexed { i, octet ->
+            ipString.split(".").map { it.toInt() }.forEachIndexed { i, octet ->
                 ipNumber = ipNumber.or(octet.shl((3 - i) * 8))
             }
             return ipNumber
@@ -76,17 +78,28 @@ class IPV4Address(
     }
 
     enum class ToStringOption {
+        /**
+         * Can be used to convert the [IPV4Address] to an "x.x.x.x" string
+         *
+         * @see [IPV4Address.toString]
+         */
         ONLY_ADDRESS {
             override fun toString(ipV4Address: IPV4Address, ignored: IPV4Mask.ToStringOption): String {
                 val stringBuilder = StringBuilder()
                 for (i in 3 downTo  0) {
-                    val octet = (ipV4Address.ipValue.and(255.shl(i * 8))).ushr(i * 8)
+                    val octet = (ipV4Address.intValue.and(255.shl(i * 8))).ushr(i * 8)
                     stringBuilder.append(octet)
                     stringBuilder.append(if (i != 0) "." else "")
                 }
                 return stringBuilder.toString()
             }
         },
+
+        /**
+         * Can be used to convert the [IPV4Address] to an "x.x.x.x {mask}" string
+         *
+         * @see IPV4Address.toString
+         */
         ADDRESS_AND_MASK {
             override fun toString(ipV4Address: IPV4Address, maskFormat: IPV4Mask.ToStringOption): String {
                 return ONLY_ADDRESS.toString(ipV4Address, maskFormat) + " ${ipV4Address.mask.toString(maskFormat)}"

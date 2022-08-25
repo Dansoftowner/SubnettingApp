@@ -30,6 +30,16 @@ import kotlin.math.pow
 class IPV4Mask(val bitCount: Int) {
 
     /**
+     * The 32-bit Int representation of the subnet mask.
+     *
+     * > e.g. IPV4Mask(bitCount = 8).asInt -> 0xFF000000
+     */
+    val asInt: Int by lazy {
+        val num = 1.shl(bitCount -1)
+        num.or(num - 1).shl(32 - bitCount)
+    }
+
+    /**
      * Constructs the ipv4 mask by the given string representation.
      *
      * The string can follow the _CIDR_ notation (like `/24`)
@@ -75,11 +85,6 @@ class IPV4Mask(val bitCount: Int) {
         // bitCount = 25 -> 11111111 11111111 11111111 10000000
         // fullOctetsCount = 25 / 8 -> 3,125 -> 3
         // remainedBits = 25 - (3 * 8) = 1
-    }
-
-    fun asNumber(): Int {
-        val num = 1.shl(bitCount -1)
-        return num.or(num - 1).shl(32 -bitCount)
     }
 
     override fun toString(): String {

@@ -1,3 +1,21 @@
+/*
+ * SubnettingApp
+ * Copyright (c) 2022.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.subnetting
 
 /**
@@ -9,30 +27,3 @@ const val IPV4_ADDRESS_PATTERN = "\\d+\\.\\d+\\.\\d+\\.\\d+"
  * Regular expression representing a subnet mask written with the _routing prefix_
  */
 const val MASK_CIDR_PATTERN = "/\\d+"
-
-@Deprecated("Use kotlin's Int.countOneBits()", level = DeprecationLevel.ERROR)
-fun octetBitCount(octet: UByte): Int {
-    var n = octet
-    var count = 0
-    while (n > 0u) {
-        count++
-        n = n.and((n - 1u).toUByte())
-    }
-
-    // 10 - 00001010
-    // 10 > 0 ? yes -> count = 1
-
-    // 10 & 9 -> removes the least significant 1
-    //   00001010
-    // & 00001001
-    //   00001000
-    // 8 > 0 ? yes -> count = 2
-
-    // 8 & 7
-    //   00001000
-    // & 00000111
-    //   00000000
-    // 0 > 0 ? no -> count stays 2
-
-    return count
-}

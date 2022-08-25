@@ -30,7 +30,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val subnetAddress: IPV4Address by lazy {
         IPV4Address(
-            ipAddress.ipValue.and((ipAddress.mask.asNumber())),
+            ipAddress.intValue.and((ipAddress.mask.asInt)),
             ipAddress.mask
         )
     }
@@ -40,7 +40,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val firstHostAddress: IPV4Address by lazy {
         IPV4Address(
-            subnetAddress.ipValue + 1,
+            subnetAddress.intValue + 1,
             subnetAddress.mask
         )
     }
@@ -50,7 +50,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val lastHostAddress: IPV4Address by lazy {
         IPV4Address(
-            broadcastAddress.ipValue -1,
+            broadcastAddress.intValue -1,
             broadcastAddress.mask
         )
     }
@@ -60,7 +60,7 @@ class IPV4Subnet(private val ipAddress: IPV4Address) {
      */
     val broadcastAddress: IPV4Address by lazy {
         IPV4Address(
-            subnetAddress.ipValue.or((subnetAddress.mask.asNumber().inv())),
+            subnetAddress.intValue.or((subnetAddress.mask.asInt.inv())),
             subnetAddress.mask
         )
     }

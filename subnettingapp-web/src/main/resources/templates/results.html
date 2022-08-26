@@ -29,7 +29,7 @@
 <div th:replace="header.html :: .header"></div>
 
 <div class="container">
-    <p class="count-label">Count of subnets: <strong th:text="${entries.size}">1</strong></p>
+    <p class="count-label"> <span th:text="#{results.countLabel}" th:remove="tag">Count of subnets:</span> <strong th:text="${entries.size}">1</strong></p>
     <div class="entry" th:each="entry : ${entries}">
 
         <p class="index-label" th:text="${entryStat.index} + 1">1</p>
@@ -37,36 +37,36 @@
         <table>
             <tr>
                 <td class="label">
-                    <label>Subnet address:</label>
-                    <label class="abbr-label">A:</label>
+                    <label th:text="#{results.entry.subnet_address}">Subnet address:</label>
+                    <label class="abbr-label" th:text="#{results.entry.subnet_address.abbr}">A:</label>
                 </td>
                 <td class="value" th:text="${entry.subnetAddress}">x.x.x.x</td>
             </tr>
             <tr>
                 <td class="label">
-                    <label>First host address:</label>
-                    <label class="abbr-label">F:</label>
+                    <label th:text="#{results.entry.first_host}">First host address:</label>
+                    <label class="abbr-label" th:text="#{results.entry.first_host.abbr}">F:</label>
                 </td>
                 <td class="value" th:text="${entry.firstHostAddress}">x.x.x.x</td>
             </tr>
             <tr>
                 <td class="label">
-                    <label>Last host address:</label>
-                    <label class="abbr-label">L:</label>
+                    <label th:text="#{results.entry.last_host}">Last host address:</label>
+                    <label class="abbr-label" th:text="#{results.entry.last_host.abbr}">L:</label>
                 </td>
                 <td class="value" th:text="${entry.lastHostAddress}">x.x.x.x</td>
             </tr>
             <tr>
                 <td class="label">
-                    <label>Broadcast address:</label>
-                    <label class="abbr-label">B:</label>
+                    <label th:text="#{results.entry.broadcast}">Broadcast address:</label>
+                    <label class="abbr-label" th:text="#{results.entry.broadcast.abbr}">B:</label>
                 </td>
                 <td class="value" th:text="${entry.broadcastAddress}">x.x.x.x</td>
             </tr>
             <tr>
                 <td class="label">
-                    <label>Mask:</label>
-                    <label class="abbr-label">M:</label>
+                    <label th:text="#{results.entry.mask}">Mask:</label>
+                    <label class="abbr-label" th:text="#{results.entry.mask.abbr}">M:</label>
                 </td>
                 <td class="value" th:text="${entry.subnetMask}">x.x.x.x</td>
             </tr>

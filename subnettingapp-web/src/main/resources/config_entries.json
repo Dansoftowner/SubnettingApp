@@ -1,31 +1,52 @@
 [
   {
     "name": "theme",
-    "localizedName": "theme",
+    "localizedName": "settings.theme",
     "group": null,
     "type": "select",
     "options": [
       {
         "name": "dark",
-        "localizedName": "dark"
+        "localizedName": "settings.theme.dark"
       },
       {
         "name": "light",
-        "localizedName": "light"
+        "localizedName": "settings.theme.light"
       },
       {
         "name": "auto",
-        "localizedName": "auto"
+        "localizedName": "settings.theme.auto"
       }
     ],
     "defaultValue": "dark"
   },
   {
+    "name": "language",
+    "localizedName": "settings.language",
+    "group": null,
+    "type": "select",
+    "options": [
+      {
+        "name": "auto",
+        "localizedName": "settings.language.auto"
+      },
+      {
+        "name": "en",
+        "localizedName": "settings.language.en"
+      },
+      {
+        "name": "hu",
+        "localizedName": "settings.language.hu"
+      }
+    ],
+    "defaultValue": "auto"
+  },
+  {
     "name": "auto_mask",
-    "localizedName" : "Calculate masks automatically",
+    "localizedName" : "settings.auto_mask",
     "group" : {
       "name": "auto_mask",
-      "localizedName": "Automatic mask calculation"
+      "localizedName": "settings.group.auto_mask"
     },
     "type" : "checkbox",
     "options" : [
@@ -40,17 +61,17 @@
   },
   {
     "name": "auto_mask_format",
-    "localizedName": "auto mask format",
+    "localizedName": "settings.auto_mask_format",
     "group": "auto_mask",
     "type": "select",
     "options": [
       {
         "name": "cdir",
-        "localizedName": "CDir format (/x)"
+        "localizedName": "settings.auto_mask_format.cdir"
       },
       {
         "name": "ddn",
-        "localizedName": "Dot decimal notation (x.x.x.x)"
+        "localizedName": "settings.auto_mask_format.ddn"
       }
     ],
     "defaultValue": "cdir"

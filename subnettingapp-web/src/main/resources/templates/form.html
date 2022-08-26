@@ -37,27 +37,27 @@
         <table>
             <tr>
                 <td>
-                    <label for="ipField">IP address:</label>
-                    <label class="abbr-label" for="ipField">IP:</label>
+                    <label for="ipField" th:text="#{form.ipField.label}">IP address:</label>
+                    <label class="abbr-label" for="ipField" th:text="#{form.ipField.label.abbr}">IP:</label>
                 </td>
                 <td>
-                    <input type="text" id="ipField" name="ip" placeholder="The IP address e.g.: 127.0.0.1">
+                    <input type="text" id="ipField" name="ip" th:placeholder="#{form.ipField.prompt}">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label for="maskField">Subnet mask:</label>
-                    <label class="abbr-label" for="maskField">M:</label>
+                    <label for="maskField" th:text="#{form.maskField.label}">Subnet mask:</label>
+                    <label class="abbr-label" for="maskField" th:text="#{form.maskField.label.abbr}">M:</label>
                 </td>
                 <td>
                     <input type="text" id="maskField" name="mask"
-                           placeholder="The subnet address e.g.: '255.255.0.0' or '/16'">
+                           th:placeholder="#{form.maskField.prompt}">
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
                     <input type="radio" id="simpleInfoBox" name="task" value="si" checked>
-                    <label>Basic subnet info</label>
+                    <label th:text="#{form.task.basic_subnet_info}">Basic subnet info</label>
                     <label class="abbr-label">Basic</label>
                     </input>
                 </td>
@@ -65,18 +65,18 @@
             <tr>
                 <td>
                     <input type="radio" id="partitioningBox" name="task" value="sp">
-                    <label>Subnet partitioning:</label>
+                    <label th:text="#{form.task.partition}">Subnet partitioning:</label>
                     </input>
                 </td>
                 <td>
                     <input type="text" id="hostsCount" name="hostCounts"
-                           placeholder="The required hosts count e.g.: 1,10,12"><br/>
+                           th:placeholder="#{form.hostsCount.prompt}"><br/>
                 </td>
             </tr>
             <tr>
                 <td class="submit-td" colspan="2">
                     <hr/>
-                    <input type="submit" value="Calculate">
+                    <input type="submit" th:value="#{form.submit}">
                 </td>
             </tr>
         </table>

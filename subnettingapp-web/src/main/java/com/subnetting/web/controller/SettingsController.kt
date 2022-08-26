@@ -19,6 +19,8 @@
 package com.subnetting.web.controller
 
 import com.subnetting.web.settings.AppSettings
+import com.subnetting.web.settings.ConfigEntry
+import com.subnetting.web.settings.ConfigExclusions
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -31,7 +33,7 @@ import javax.servlet.http.HttpServletResponse
 @Controller
 @RequestScope
 @RequestMapping("/settings")
-class SettingsController(private val appSettings: AppSettings) {
+class SettingsController(private val appSettings: AppSettings, private val configExclusions: ConfigExclusions) {
 
     @GetMapping
     fun page(): String {
@@ -41,12 +43,20 @@ class SettingsController(private val appSettings: AppSettings) {
     @PostMapping
     fun saveSettings(request: HttpServletRequest, response: HttpServletResponse): String {
         appSettings.keys.forEach { config ->
-            (request.getParameter(config.name) ?: "false".takeIf { config.type == "checkbox" })?.let { value ->
+            getParameterValue(request, config)?.let { value ->
                 appSettings[config.name] = value
-                response.addCookie(Cookie(config.name, value))
+                if (!configExclusions.isExcluded(config.name, value)) {
+                    response.addCookie(Cookie(config.name, value))
+                } else {
+                    response.addCookie(Cookie(config.name, value).apply { maxAge = 0 })
+                }
             }
         }
         return page()
+    }
+
+    private fun getParameterValue(request: HttpServletRequest, configEntry: ConfigEntry): String? {
+        return request.getParameter(configEntry.name) ?: "false".takeIf { configEntry.type == "checkbox" }
     }
 
 }

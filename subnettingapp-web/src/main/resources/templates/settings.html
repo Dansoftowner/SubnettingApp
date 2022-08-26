@@ -34,18 +34,18 @@
 <div class="container config-page-container">
     <form method="post">
         <div>
-            <h2>Settings</h2>
+            <h2 th:text="#{settings}">Settings</h2>
         </div>
         <div id="configPage">
             <div class="group-page" th:each="groupAndEntries : ${@appSettings.getEntriesByGroup()}">
-                <span class="group-span" th:text="${groupAndEntries.key == null ? 'General' : groupAndEntries.key.localizedName}"></span>
+                <span class="group-span" th:text="${groupAndEntries.key} == null ? #{settings.group.general} : #{${groupAndEntries.key.localizedName}}"></span>
                 <div th:each="configEntry : ${groupAndEntries.value}">
-                    <label th:text="${configEntry.localizedName} + ':'" th:for="${configEntry.name} + '-select'"
+                    <label th:text="#{${configEntry.localizedName}} + ':'" th:for="${configEntry.name} + '-select'"
                            for="config-select">Setting:</label>
                     <select th:if="${configEntry.type} == 'select'" th:name="${configEntry.name}"
                             th:id="${configEntry.name} + '-select'" id="config-select">
                         <option th:each="option : ${configEntry.options}" th:value="${option.name}"
-                                th:text="${option.localizedName}"
+                                th:text="#{${option.localizedName}}"
                                 th:selected="${option == @appSettings.get(configEntry)}">
                             Option
                         </option>

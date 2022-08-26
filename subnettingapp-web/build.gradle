@@ -1,14 +1,17 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.2'
-	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
-	id "org.jetbrains.kotlin.plugin.spring" version "${KOTLIN_VERSION}"
+    id 'application'
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id "org.jetbrains.kotlin.plugin.spring" version "${KOTLIN_VERSION}"
 }
+
+mainClassName = 'com.subnetting.web.SubnettingWebApplicationKt'
 
 task stage(dependsOn: ['bootJar'])
 
 dependencies {
-	implementation project(':subnettingapp-core')
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation project(':subnettingapp-core')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.3'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -18,20 +18,22 @@
 
 package com.subnetting.web.i18n
 
-import com.subnetting.web.settings.ConfigExclusions
 import org.springframework.context.MessageSource
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.ResourceBundleMessageSource
+import org.springframework.web.servlet.HandlerInterceptor
 import org.springframework.web.servlet.LocaleResolver
+import org.springframework.web.servlet.ModelAndView
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.web.servlet.i18n.CookieLocaleResolver
+import javax.servlet.http.Cookie
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 
 @Configuration
-class I18nConfig(configExclusions: ConfigExclusions) {
-
-    init {
-        configExclusions.addExclusion { configName, value -> configName == "language" && value == "auto" }
-    }
+class I18nConfig : WebMvcConfigurer {
 
     @Bean("messageSource")
     fun messageSource(): MessageSource = ResourceBundleMessageSource().apply {
@@ -42,6 +44,22 @@ class I18nConfig(configExclusions: ConfigExclusions) {
     @Bean
     fun localeResolver(): LocaleResolver = CookieLocaleResolver().apply {
         cookieName = "language"
+    }
+
+    override fun addInterceptors(registry: InterceptorRegistry) {
+        registry.addInterceptor(object : HandlerInterceptor {
+            override fun postHandle(
+                request: HttpServletRequest,
+                response: HttpServletResponse,
+                handler: Any,
+                modelAndView: ModelAndView?
+            ) {
+                // If language is automatic, we shouldn't store a cookie for it
+                if (request.getParameter("language") == "auto") {
+                    response.addCookie(Cookie("language", "auto").apply { maxAge = 0 })
+                }
+            }
+        })
     }
 
 }

@@ -63,8 +63,8 @@ form table tr td:first-child {
     white-space: nowrap;
 }
 
-form table tr .input-td input {
-    width: 98%;
+form table tr .input-td div {
+    padding-right: 20px;
 }
 
 form label {
@@ -75,10 +75,9 @@ form input[type="text"] {
     transition: outline .2s;
     border-width: 0;
     padding: 10px;
-    background-radius: 5px;
     border-radius: 5px;
     font: inherit;
-    /*width: 98%;*/
+    width: 100%;
 }
 
 form input[type="submit"] {

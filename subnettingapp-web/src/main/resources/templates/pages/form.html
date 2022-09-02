@@ -41,7 +41,9 @@
                     <label class="abbr-label" for="ipField" th:text="#{form.ipField.label.abbr}">IP:</label>
                 </td>
                 <td class="input-td">
-                    <input type="text" id="ipField" name="ip" th:placeholder="#{form.ipField.prompt}">
+                    <div>
+                        <input type="text" id="ipField" name="ip" th:placeholder="#{form.ipField.prompt}">
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -50,8 +52,10 @@
                     <label class="abbr-label" for="maskField" th:text="#{form.maskField.label.abbr}">M:</label>
                 </td>
                 <td class="input-td">
-                    <input type="text" id="maskField" name="mask"
-                           th:placeholder="#{form.maskField.prompt}">
+                    <div>
+                        <input type="text" id="maskField" name="mask"
+                        th:placeholder="#{form.maskField.prompt}">
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -69,8 +73,10 @@
                     </input>
                 </td>
                 <td class="input-td">
-                    <input type="text" id="hostsCount" name="hostCounts"
-                           th:placeholder="#{form.hostsCount.prompt}"><br/>
+                    <div>
+                        <input type="text" id="hostsCount" name="hostCounts"
+                           th:placeholder="#{form.hostsCount.prompt}">
+                    </div>
                 </td>
             </tr>
             <tr>

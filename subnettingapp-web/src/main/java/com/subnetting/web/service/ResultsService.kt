@@ -25,6 +25,9 @@ import com.subnetting.ipv4.IPV4SubnetPartitioner
 import com.subnetting.web.domain.Entry
 import org.springframework.stereotype.Service
 
+/**
+ * The service responsible for processing the entries (subnets) that will be shown for the user.
+ */
 @Service
 class ResultsService {
 

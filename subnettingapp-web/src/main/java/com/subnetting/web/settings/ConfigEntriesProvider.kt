@@ -4,6 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
+/**
+ * Responsible for supplying the config-entries available for the app.
+ */
 @Configuration
 class ConfigEntriesProvider {
     @Bean("configEntries")

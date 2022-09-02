@@ -18,6 +18,9 @@
 
 package com.subnetting.web.settings
 
+/**
+ * Represents a configuration that can be set for the app
+ */
 data class ConfigEntry @JvmOverloads constructor(
     val name: String = "",
     val localizedName: String = name,
@@ -48,6 +51,9 @@ data class ConfigEntry @JvmOverloads constructor(
         return name.hashCode()
     }
 
+    /**
+     * Represents an option that can be set to a given [ConfigEntry]
+     */
     class Option @JvmOverloads constructor(
         val name: String = "",
         val localizedName: String = name
@@ -73,6 +79,9 @@ data class ConfigEntry @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Represents a group which one or more config-entries belong to
+     */
     class Group @JvmOverloads constructor(
         val name: String = "",
         val localizedName: String = name
@@ -95,7 +104,5 @@ data class ConfigEntry @JvmOverloads constructor(
         override fun hashCode(): Int {
             return name.hashCode()
         }
-
-
     }
 }

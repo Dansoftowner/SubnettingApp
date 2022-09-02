@@ -23,9 +23,18 @@ import org.springframework.stereotype.Component
 import org.springframework.web.context.annotation.RequestScope
 import javax.servlet.http.HttpServletRequest
 
+/**
+ * Bean that stores the application configurations for a given user.
+ *
+ * A new instance is created by every request, and it reads the configurations from the user's cookies.
+ * It's basically a processed form of the cookies.
+ */
 @Component
 @RequestScope
-class AppSettings(request: HttpServletRequest, private val configEntries: List<ConfigEntry>) : MutableMap<ConfigEntry, Option> by LinkedHashMap() {
+class AppSettings(
+    request: HttpServletRequest,
+    private val configEntries: List<ConfigEntry>
+) : MutableMap<ConfigEntry, Option> by LinkedHashMap() {
 
     private val List<ConfigEntry>.configNames get() = map { it.name }
 
@@ -34,12 +43,18 @@ class AppSettings(request: HttpServletRequest, private val configEntries: List<C
         readFromCookies(request)
     }
 
+    /**
+     * Puts the default values
+     */
     private fun putEntries() {
         configEntries.forEach {
             this[it] = it.defaultValue
         }
     }
 
+    /**
+     * Parses the configurations from the sent-in cookies
+     */
     private fun readFromCookies(request: HttpServletRequest) {
         request.cookies
             ?.filter { configEntries.configNames.contains(it.name) }
@@ -50,14 +65,31 @@ class AppSettings(request: HttpServletRequest, private val configEntries: List<C
             ?.forEach { this[it.key!!] = it.value!! }
     }
 
-    operator fun get(entryName: String) = this[configEntries.toConfigEntry(entryName)]
+    /**
+     * Gets the configured value for the given key.
+     *
+     * @param entryName the string identifier of the configuration
+     */
+    operator fun get(entryName: String): Option? = this[configEntries.toConfigEntry(entryName)]
 
+    /**
+     * Maps the given config-value to the configuration.
+     *
+     * @param entryName the name of the configuration
+     * @param optionName the name of the option
+     */
     operator fun set(entryName: String, optionName: String) {
         val configEntry = configEntries.toConfigEntry(entryName)!!
         set(configEntry, configEntry.toOption(optionName)!!)
     }
 
+    /**
+     * Gets the configurations by their groups.
+     */
     fun getEntriesByGroup() : Map<ConfigEntry.Group?, List<ConfigEntry>> = keys.groupBy { it.group }
 
+    /**
+     * Finds the config-entry in the list according to the given name
+     */
     private fun List<ConfigEntry>.toConfigEntry(entryName: String) = find { it.name == entryName }
 }

@@ -27,6 +27,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.web.servlet.i18n.CookieLocaleResolver
 
+/**
+ * Provides all necessary configurations required for fluent internationalization.
+ */
 @Configuration
 class I18nConfig(private val languageHandlingInterceptor: LanguageHandlingInterceptor) : WebMvcConfigurer {
 

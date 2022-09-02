@@ -55,7 +55,7 @@ class SettingsController(private val appSettings: AppSettings) {
     }
 
     companion object {
-        private const val SETTINGS_PAGE = "settings"
+        private const val SETTINGS_PAGE = "pages/settings"
     }
 
 }

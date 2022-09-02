@@ -22,11 +22,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Error</title>
-    <link rel="stylesheet" th:replace="theme.html" href="../static/stylesheets/dark.css">
+    <link rel="stylesheet" th:replace="/components/theme.html" href="../static/stylesheets/dark.css">
 </head>
 <body>
 
-<div th:replace="header.html :: .header"></div>
+<div th:replace="/components/header.html :: .header"></div>
 
 <div class="container error">
     <h1>Oops. Something went wrong.</h1>
@@ -64,7 +64,7 @@
 
 
 
-<div th:replace="footer.html"></div>
+<div th:replace="/components/footer.html"></div>
 
 </body>
 </html>

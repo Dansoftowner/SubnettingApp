@@ -21,6 +21,6 @@ class ResultsController(private val service: ResultsService) {
         @RequestParam(required = false) hostCounts: String?
     ): String {
         model["entries"] = service.getEntries(ip, mask, task, hostCounts)
-        return "results"
+        return "pages/results"
     }
 }

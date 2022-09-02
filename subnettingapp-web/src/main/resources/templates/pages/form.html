@@ -40,7 +40,7 @@
                     <label for="ipField" th:text="#{form.ipField.label}">IP address:</label>
                     <label class="abbr-label" for="ipField" th:text="#{form.ipField.label.abbr}">IP:</label>
                 </td>
-                <td>
+                <td class="input-td">
                     <input type="text" id="ipField" name="ip" th:placeholder="#{form.ipField.prompt}">
                 </td>
             </tr>
@@ -49,7 +49,7 @@
                     <label for="maskField" th:text="#{form.maskField.label}">Subnet mask:</label>
                     <label class="abbr-label" for="maskField" th:text="#{form.maskField.label.abbr}">M:</label>
                 </td>
-                <td>
+                <td class="input-td">
                     <input type="text" id="maskField" name="mask"
                            th:placeholder="#{form.maskField.prompt}">
                 </td>
@@ -68,7 +68,7 @@
                     <label th:text="#{form.task.partition}">Subnet partitioning:</label>
                     </input>
                 </td>
-                <td>
+                <td class="input-td">
                     <input type="text" id="hostsCount" name="hostCounts"
                            th:placeholder="#{form.hostsCount.prompt}"><br/>
                 </td>

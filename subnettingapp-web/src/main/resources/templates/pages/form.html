@@ -23,13 +23,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Subnetting App</title>
-    <link rel="stylesheet" th:replace="/components/theme.html" href="../static/stylesheets/dark.css">
+    <link rel="stylesheet" th:replace="components/theme.html" href="../static/stylesheets/dark.css">
     <script th:src="@{scripts/form.js}" src="../static/scripts/form.js"></script>
 </head>
 
 <body>
 
-<div th:replace="/components/header.html :: .header"></div>
+<div th:replace="components/header.html :: .header"></div>
 
 <div class="container">
     <form action="results">
@@ -62,7 +62,7 @@
                 <td colspan="2">
                     <input type="radio" id="simpleInfoBox" name="task" value="si" checked>
                     <label th:text="#{form.task.basic_subnet_info}">Basic subnet info</label>
-                    <label class="abbr-label">Basic</label>
+                    <label th:text="#{form.task.basic_subnet_info.abbr}" class="abbr-label">Basic</label>
                     </input>
                 </td>
             </tr>
@@ -91,7 +91,7 @@
 
 </div>
 
-<div th:replace="/components/footer.html"></div>
+<div th:replace="components/footer.html"></div>
 
 </body>
 

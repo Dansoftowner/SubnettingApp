@@ -22,18 +22,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Error</title>
-    <link rel="stylesheet" th:replace="/components/theme.html" href="../static/stylesheets/dark.css">
+    <link rel="stylesheet" th:replace="components/theme.html" href="../static/stylesheets/dark.css">
 </head>
 <body>
 
-<div th:replace="/components/header.html :: .header"></div>
+<div th:replace="components/header.html :: .header"></div>
 
 <div class="container error">
     <h1><strong>404</strong></h1>
     <h2>The page '<span th:text="${path}"></span>' does not exist.</h2>
 </div>
 
-<div th:replace="/components/footer.html"></div>
+<div th:replace="components/footer.html"></div>
 
 </body>
 </html>

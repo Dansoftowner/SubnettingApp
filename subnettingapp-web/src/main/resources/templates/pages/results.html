@@ -22,11 +22,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Results</title>
-    <link rel="stylesheet" th:replace="/components/theme.html"  href="../static/stylesheets/dark.css">
+    <link rel="stylesheet" th:replace="components/theme.html"  href="../static/stylesheets/dark.css">
 </head>
 <body>
 
-<div th:replace="/components/header.html :: .header"></div>
+<div th:replace="components/header.html :: .header"></div>
 
 <div class="container">
     <p class="count-label"> <span th:text="#{results.countLabel}" th:remove="tag">Count of subnets:</span> <strong th:text="${entries.size}">1</strong></p>
@@ -75,7 +75,7 @@
 
     </div>
 
-    <div th:replace="/components/footer.html"></div>
+    <div th:replace="components/footer.html"></div>
 </div>
 
 </body>

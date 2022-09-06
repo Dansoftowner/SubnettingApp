@@ -18,7 +18,7 @@
         "localizedName": "settings.theme.auto"
       }
     ],
-    "defaultValue": "dark"
+    "defaultValue": "auto"
   },
   {
     "name": "language",

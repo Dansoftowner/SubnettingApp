@@ -23,7 +23,7 @@ import com.subnetting.MASK_CIDR_PATTERN
 import kotlin.math.pow
 
 /**
- * Represents an IPV4 subnet mask.
+ * Represents an IPV4 subnet mask. Supports only continuous masks!
  *
  * @author Daniel Gyoerffy
  */
@@ -37,6 +37,10 @@ class IPV4Mask(val bitCount: Int) {
     val asInt: Int by lazy {
         val num = 1.shl(bitCount -1)
         num.or(num - 1).shl(32 - bitCount)
+    }
+
+    init {
+        require(bitCount in 1 until 32)
     }
 
     /**

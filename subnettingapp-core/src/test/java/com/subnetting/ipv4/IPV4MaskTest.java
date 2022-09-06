@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -31,15 +32,22 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class IPV4MaskTest {
 
-    @Test
-    void bitCountValidations() {
-        IntStream.of(-1, 0, 32).forEach(bitCount ->
-                assertThrows(
-                        IllegalArgumentException.class,
-                        () -> new IPV4Mask(bitCount)
-                )
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0, 32})
+    void bitCountValidations(int bitCount) {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new IPV4Mask(bitCount)
         );
+    }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"0.255.0.0", "254.255.1.0", "0.0.0.0"})
+    void stringFormValidations(String stringFormat) {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new IPV4Mask(stringFormat)
+        );
     }
 
     @ParameterizedTest

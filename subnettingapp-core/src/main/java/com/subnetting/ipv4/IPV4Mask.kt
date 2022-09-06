@@ -57,8 +57,10 @@ class IPV4Mask(val bitCount: Int) {
                 numberValue
             }
             stringFormat.matches(Regex(IPV4_ADDRESS_PATTERN)) -> {
-                val octets = stringFormat.split(".").map { it.toUByte() }
-                octets.sumOf { it.countOneBits() }
+                val octets = stringFormat.split(".").map { it.toUByte() }.also {
+                    it.chunked(2).forEach { (val1, val2) -> require(val1 >= val2) } // the mask must be continuous
+                }
+                octets.sumOf { it.countOneBits() }.also { require(it > 0) }
             }
             else -> throw IllegalArgumentException()
         }

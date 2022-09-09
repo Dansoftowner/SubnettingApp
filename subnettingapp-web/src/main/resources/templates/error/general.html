@@ -29,8 +29,8 @@
 <div th:replace="components/header.html :: .header"></div>
 
 <div class="container error">
-    <h1>Oops. Something went wrong.</h1>
-    <h2>Status code: <span th:text="${status}"></span></h2>
+    <h1 th:text="#{error.general.heading}">Oops. Something went wrong.</h1>
+    <h2><span th:text="#{error.general.status_code}" th:remove="tag">Status code:</span> <span th:text="${status}"></span></h2>
 </div>
 
 

@@ -71,26 +71,8 @@ class IPV4Mask(val bitCount: Int) {
      *
      * @param octetIndex the index of the octet between 0 and 3
      */
-    operator fun get(octetIndex: Int): UByte {
-        val fullOctetsCount = bitCount / 8
-        return if (octetIndex < fullOctetsCount) {
-            255u
-        } else if (octetIndex == fullOctetsCount) {
-            var remainedBits = bitCount - (fullOctetsCount * 8)
-            var mask = 0
-            var i = 8
-            while (remainedBits > 0) {
-                mask += 2.0.pow(--i).toInt()
-                remainedBits--
-            }
-            mask.toUByte()
-        } else {
-            0u
-        }
-
-        // bitCount = 25 -> 11111111 11111111 11111111 10000000
-        // fullOctetsCount = 25 / 8 -> 3,125 -> 3
-        // remainedBits = 25 - (3 * 8) = 1
+    operator fun get(octetIndex: Int): Int {
+        return (asInt.shr(24 - octetIndex * 8)).and(255)
     }
 
     override fun toString(): String {
